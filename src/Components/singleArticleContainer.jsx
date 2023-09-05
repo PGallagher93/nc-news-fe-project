@@ -8,11 +8,17 @@ const SingleArticleContainer = ({singleArticle, article_id}) => {
       useEffect(()=>{
         setArticlevotes(singleArticle.votes)
       }, [])
-    const updateVotes = () =>{
+    const updateVotes = (buttonPressed) =>{
+        let voteIncrement = 0
+        if(buttonPressed === 'Upvote') {
+            voteIncrement = 1
+        }
+        else voteIncrement = -1
+        
             if(!isClicked){
                 setIsClicked(true)
-             patchArticleVotes(article_id, 1).then((res) =>{
-                setArticlevotes(articleVotes + 1)
+             patchArticleVotes(article_id, voteIncrement).then((res) =>{
+                setArticlevotes(articleVotes + voteIncrement)
              }).catch(() =>{
                 setIsError(true)
              })}
@@ -31,7 +37,12 @@ const SingleArticleContainer = ({singleArticle, article_id}) => {
             </section>
             <section className="single-article-votes">
                 <p>Votes: {articleVotes} </p>
-                <button onClick={updateVotes}>Upvote</button>
+                <button onClick={(e)=> {
+                    updateVotes(e.target.innerText)
+                }}>Upvote</button>
+                <button onClick={(e)=>{
+                    updateVotes(e.target.innerText)}}>Downvote</button>
+                
             </section>
             {isError && (
   <p className="error"> Unable to add vote, please try again later! </p>)}
