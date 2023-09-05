@@ -3,7 +3,7 @@ import {Routes, Route} from 'react-router-dom'
 import './App.css'
 import Header from './Components/Header'
 import AllArticles from './pages/AllArticles'
-import fetchArticles from './api/fetchArticles'
+import {fetchArticles} from './api'
 import SingleArticle from './pages/SingleArticle'
 
 function App() {
