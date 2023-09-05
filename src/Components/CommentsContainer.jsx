@@ -1,6 +1,6 @@
 import {useState, useEffect} from 'react'
 import CommentList from './CommentList'
-import fetchComments from '../api/fetchComments'
+import {fetchComments} from '../api'
 
 
 const CommentsContainer = ({article_id}) =>{

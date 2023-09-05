@@ -1,4 +1,23 @@
-const SingleArticleContainer = ({singleArticle}) => {
+import {useState, useEffect} from 'react'
+import { patchArticleVotes } from '../api'
+
+const SingleArticleContainer = ({singleArticle, article_id}) => {
+      const [articleVotes, setArticlevotes] = useState(0)
+      const [isClicked, setIsClicked] = useState(false)
+      const [isError, setIsError] = useState(false)
+      useEffect(()=>{
+        setArticlevotes(singleArticle.votes)
+      }, [])
+    const updateVotes = () =>{
+            if(!isClicked){
+                setIsClicked(true)
+             patchArticleVotes(article_id, 1).then((res) =>{
+                setArticlevotes(articleVotes + 1)
+             }).catch(() =>{
+                setIsError(true)
+             })}
+
+    }
     return (
         <article className="single-article">
             <h2>{singleArticle.title}</h2>
@@ -8,7 +27,14 @@ const SingleArticleContainer = ({singleArticle}) => {
             </figure>
             <section>
                 <p>By {singleArticle.author}</p>
+                
             </section>
+            <section className="single-article-votes">
+                <p>Votes: {articleVotes} </p>
+                <button onClick={updateVotes}>Upvote</button>
+            </section>
+            {isError && (
+  <p className="error"> Unable to add vote, please try again later! </p>)}
         </article>
     )
 }
