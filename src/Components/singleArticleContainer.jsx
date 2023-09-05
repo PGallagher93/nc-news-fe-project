@@ -9,6 +9,7 @@ const SingleArticleContainer = ({singleArticle, article_id}) => {
         setArticlevotes(singleArticle.votes)
       }, [])
     const updateVotes = () =>{
+        console.log(e)
             if(!isClicked){
                 setIsClicked(true)
              patchArticleVotes(article_id, 1).then((res) =>{
