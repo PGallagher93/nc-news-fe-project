@@ -1,23 +1,31 @@
 import {useParams} from "react-router-dom"
+import {useState, useEffect} from 'react'
+import fetchSingleArticle from "../api/fetchSingleArticle"
+import SingleArticleContainer from "../Components/singleArticleContainer"
 
-const SingleArticle = ({articles}) =>{
+const SingleArticle = ({articles, isLoading, setIsLoading}) =>{
    
     const {article_id} = useParams()
-    const singleArticle = articles.find((article) => {
-        
-        return article.article_id === +article_id
-    })
-    return (
-        <article className="single-article">
-            <h2>{singleArticle.title}</h2>
-            <p className="article-date">Posted on {singleArticle.created_at.substr(0,10)}</p>
-            <figure>
-                <img src={singleArticle.article_img_url} alt = {singleArticle.title} className="single-article-img"/>
-            </figure>
-            <section>
-                <p>By {singleArticle.author}</p>
-            </section>
-        </article>
+    console.log(article_id, "<< id")
+    const [singleArticle, setSingleArticle] = useState({})
+
+    useEffect(()=>{
+        setIsLoading(true)
+        fetchSingleArticle(article_id).then((res) =>{
+            console.log(res)
+            setIsLoading(false)
+           setSingleArticle(res.data.article)
+        })
+    },[])
+    console.log(singleArticle, "<< single article")
+    console.log(isLoading, "<< loading")
+    if(isLoading) return (
+        <p>Loading...</p>
+    )
+   else if (singleArticle.title) return (
+        <main>
+            <SingleArticleContainer singleArticle={singleArticle}/>
+        </main>
     )
 
 }

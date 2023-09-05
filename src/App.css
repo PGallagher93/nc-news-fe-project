@@ -4,6 +4,10 @@
   border-width: 0.05px;
   border-color: red;
 }
+body{
+  margin:0;
+  
+}
 
 header {
   display:flex;
@@ -37,4 +41,24 @@ header h3{
   height:auto;
   aspect-ratio: 1/1;
   object-fit: cover;
+}
+
+.single-article{
+  display:flex;
+  align-items: center;
+  flex-direction:column;
+}
+
+.single-article-img {
+  width: 80vw;
+  height:auto;
+  aspect-ratio: 1/1;
+  object-fit:cover;
+}
+
+.single-article-img-figure{
+  width: 100vw;
+  padding:2rem;
+  display:flex;
+  justify-content: center;
 }
