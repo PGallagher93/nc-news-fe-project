@@ -43,6 +43,11 @@ header h3{
   object-fit: cover;
 }
 
+.comment-list{
+  display: flex;
+  flex-direction: column;
+}
+
 .single-article{
   display:flex;
   align-items: center;
