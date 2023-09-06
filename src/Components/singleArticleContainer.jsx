@@ -4,26 +4,40 @@ import { patchArticleVotes } from '../api'
 const SingleArticleContainer = ({singleArticle, article_id}) => {
       const [articleVotes, setArticlevotes] = useState(0)
       const [isClicked, setIsClicked] = useState(false)
+      const [upvoteClicked, setUpvoteClicked] = useState(false)
+      const [DownvoteClicked, setDownvoteClicked] = useState(false)
       const [isError, setIsError] = useState(false)
       useEffect(()=>{
         setArticlevotes(singleArticle.votes)
       }, [])
-    const updateVotes = (buttonPressed) =>{
-        let voteIncrement = 0
-        if(buttonPressed === 'Upvote') {
-            voteIncrement = 1
-        }
-        else voteIncrement = -1
+    
+
+    const handleUpvote = (e) =>{
         
-            if(!isClicked){
-                setIsClicked(true)
-             patchArticleVotes(article_id, voteIncrement).then((res) =>{
-                setArticlevotes(articleVotes + voteIncrement)
-             }).catch(() =>{
+        if(!upvoteClicked) {
+            e.target.classList.add("vote-button-clicked")
+            e.currentTarget.parentNode.childNodes[2].classList.remove("vote-button-clicked")
+            setUpvoteClicked(true)
+            setDownvoteClicked(false)
+            setArticlevotes(articleVotes + 1)
+            patchArticleVotes(article_id, 1).catch(() =>{
                 setIsError(true)
              })}
+        }
 
-    }
+        const handleDownvote = (e) =>{
+            
+            if(!DownvoteClicked) {
+                e.target.classList.add("vote-button-clicked")
+                e.currentTarget.parentNode.childNodes[1].classList.remove("vote-button-clicked")
+                setDownvoteClicked(true)
+                setUpvoteClicked(false)
+                setArticlevotes(articleVotes - 1)
+                patchArticleVotes(article_id, -1).catch(() =>{
+                    setIsError(true)
+                 })}
+            }
+    
     return (
         <article className="single-article">
             <h2>{singleArticle.title}</h2>
@@ -38,10 +52,11 @@ const SingleArticleContainer = ({singleArticle, article_id}) => {
             <section className="single-article-votes">
                 <p>Votes: {articleVotes} </p>
                 <button onClick={(e)=> {
-                    updateVotes(e.target.innerText)
+                    
+                    handleUpvote(e)
                 }}>Upvote</button>
                 <button onClick={(e)=>{
-                    updateVotes(e.target.innerText)}}>Downvote</button>
+                    handleDownvote(e)}}>Downvote</button>
                 
             </section>
             {isError && (

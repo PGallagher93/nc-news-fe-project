@@ -21,4 +21,8 @@ const patchArticleVotes = (id, votes) => {
   );
 };
 
-export { fetchArticles, fetchComments, fetchSingleArticle, patchArticleVotes };
+const postComment = (id, commentBody, user) =>{
+    return axios.post(`https://nc-news-app-bch2.onrender.com/api/articles/${id}/comments`, {username: `${user}`, body: `${commentBody}`})
+}
+
+export { fetchArticles, fetchComments, fetchSingleArticle, patchArticleVotes, postComment };

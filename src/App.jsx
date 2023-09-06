@@ -9,6 +9,7 @@ import SingleArticle from './pages/SingleArticle'
 function App() {
   const [isLoading, setIsLoading] = useState(false)
   const [articles, setArticles] = useState([])
+  const [user, setUser] = useState('cooljmessy')
   useEffect(()=>{
     fetchArticles().then((res)=>{
       setArticles(res.data.articles)
@@ -20,7 +21,7 @@ function App() {
      <Header />
      <Routes>
       <Route path = "/articles" element ={<AllArticles articles={articles} />}/>
-      <Route path ="/articles/:article_id" element = {<SingleArticle articles = {articles} isLoading = {isLoading} setIsLoading ={setIsLoading}/>}/>
+      <Route path ="/articles/:article_id" element = {<SingleArticle articles = {articles} isLoading = {isLoading} setIsLoading ={setIsLoading} user={user}/>}/>
      </Routes>
     </>
   )

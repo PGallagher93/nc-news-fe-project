@@ -8,11 +8,20 @@ body{
   margin:0;
   
 }
+button:active{
+  background-color: blue;
+} 
 
 header {
   display:flex;
   width:100vw;
  justify-content: space-between;
+}
+
+input{
+  background-color: rgba(141, 128, 128, 0.4);
+  
+  
 }
 
 ul{
@@ -24,6 +33,10 @@ ul{
 
 header h3{
   margin-right: 1rem;
+}
+
+#comment-submit-button{
+  width:25vw;
 }
 
 .article-card{
@@ -48,6 +61,13 @@ header h3{
   flex-direction: column;
 }
 
+.comment-submit{
+  display:flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
 .single-article{
   display:flex;
   align-items: center;
@@ -66,4 +86,8 @@ header h3{
   padding:2rem;
   display:flex;
   justify-content: center;
+}
+
+.vote-button-clicked{
+  background-color: limegreen;
 }

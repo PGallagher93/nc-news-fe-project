@@ -4,7 +4,7 @@ import {fetchSingleArticle} from '../api'
 import SingleArticleContainer from "../Components/singleArticleContainer"
 import CommentsContainer from "../Components/CommentsContainer"
 
-const SingleArticle = ({articles, isLoading, setIsLoading}) =>{
+const SingleArticle = ({articles, isLoading, setIsLoading, user}) =>{
    
     const {article_id} = useParams()
  
@@ -27,7 +27,7 @@ const SingleArticle = ({articles, isLoading, setIsLoading}) =>{
    else if (singleArticle.title) return (
         <main>
             <SingleArticleContainer singleArticle={singleArticle} article_id ={article_id}/>
-            <CommentsContainer article_id={article_id}/>
+            <CommentsContainer article_id={article_id} user={user}/>
         </main>
     )
 
