@@ -5,6 +5,7 @@ import Header from './Components/Header'
 import AllArticles from './pages/AllArticles'
 import {fetchArticles} from './api'
 import SingleArticle from './pages/SingleArticle'
+import TopicArticles from './pages/TopicArticles'
 
 function App() {
   const [isLoading, setIsLoading] = useState(false)
@@ -22,6 +23,7 @@ function App() {
      <Routes>
       <Route path = "/articles" element ={<AllArticles articles={articles} />}/>
       <Route path ="/articles/:article_id" element = {<SingleArticle articles = {articles} isLoading = {isLoading} setIsLoading ={setIsLoading} user={user}/>}/>
+      <Route path = "/:topic/articles" element = {<TopicArticles articles={articles}/>}/>
      </Routes>
     </>
   )
