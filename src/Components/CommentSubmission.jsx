@@ -6,6 +6,7 @@ const CommentSubmission = ({user, setArticleComments, article_id, setCommentAdde
     const [commentInput, setCommentInput] = useState("")
     const [isPosting, setIsPosting] = useState(false)
     const [commentPosted, setCommentPosted] = useState(false)
+    const [isError, setIsError] = useState(false)
     const handleCommentSubmit = (e) =>{
         e.preventDefault()
         setCommentPosted(false)
@@ -19,6 +20,9 @@ const CommentSubmission = ({user, setArticleComments, article_id, setCommentAdde
             setArticleComments((curr) =>{
                 return [...curr, newComment]
             })
+        }).catch(()=>{
+            setIsError(true)
+            setIsPosting(false)
         })}
         setCommentInput("")
 
@@ -28,12 +32,15 @@ const CommentSubmission = ({user, setArticleComments, article_id, setCommentAdde
     if(commentPosted){
         commentSuccess = <p>Comment posted</p>
     }
+    if(isError){
+        commentSuccess = <p>Failed to post comment</p>
+    }
     
     if (!isPosting) {return (
         <form className="comment-submit" onSubmit={handleCommentSubmit}>
-            <input value = {commentInput} onChange ={(e) => {
+            <textarea value = {commentInput} onChange ={(e) => {
                 setCommentInput(e.target.value)
-            }}></input>
+            }}></textarea>
             <button id="comment-submit-button">Comment</button>
             {commentSuccess}
         </form>
