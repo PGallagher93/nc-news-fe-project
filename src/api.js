@@ -14,6 +14,10 @@ const fetchSingleArticle = (id) => {
   return axios.get(`https://nc-news-app-bch2.onrender.com/api/articles/${id}`);
 };
 
+const fetchTopics =() =>{
+  return axios.get("https://nc-news-app-bch2.onrender.com/api/topics")
+}
+
 const patchArticleVotes = (id, votes) => {
   return axios.patch(
     `https://nc-news-app-bch2.onrender.com/api/articles/${id}`,
@@ -25,4 +29,4 @@ const postComment = (id, commentBody, user) =>{
     return axios.post(`https://nc-news-app-bch2.onrender.com/api/articles/${id}/comments`, {username: `${user}`, body: `${commentBody}`})
 }
 
-export { fetchArticles, fetchComments, fetchSingleArticle, patchArticleVotes, postComment };
+export { fetchArticles, fetchComments, fetchSingleArticle, patchArticleVotes, postComment, fetchTopics };
