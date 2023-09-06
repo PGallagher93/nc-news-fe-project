@@ -7,7 +7,6 @@ const CommentSubmission = ({user, setArticleComments, article_id, setCommentAdde
     const [isPosting, setIsPosting] = useState(false)
     const [commentPosted, setCommentPosted] = useState(false)
     const handleCommentSubmit = (e) =>{
-        
         e.preventDefault()
         setCommentPosted(false)
         if(commentInput !== ""){
@@ -27,7 +26,7 @@ const CommentSubmission = ({user, setArticleComments, article_id, setCommentAdde
     let commentSuccess
 
     if(commentPosted){
-        commentSuccess = <p>Comment posted!</p>
+        commentSuccess = <p>Comment posted</p>
     }
     
     if (!isPosting) {return (
