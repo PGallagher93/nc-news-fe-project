@@ -14,7 +14,7 @@ import ErrorPage400 from './pages/ErrorPage400'
 function App() {
   const [isLoading, setIsLoading] = useState(false)
   const [articles, setArticles] = useState([])
-  const [user, setUser] = useState('cooljmessy')
+  const [user, setUser] = useState('')
   const [articleQuery, setArticleQuery] = useState({sort:null, topic:null, order:null})
   const [errorMessage, setErrorMessage] = useState({})
   
