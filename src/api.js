@@ -1,7 +1,26 @@
 import axios from "axios";
 
-const fetchArticles = () => {
-  return axios.get("https://nc-news-app-bch2.onrender.com/api/articles");
+const fetchArticles = ({sort, topic, order}) => {
+  let path = `https://nc-news-app-bch2.onrender.com/api/articles`
+  if(topic || sort || order){
+    path += `?`
+  }
+  
+  if (topic){
+    path+= `topic=${topic}`
+  }
+  if(sort && topic){
+    path += `&sort_by=${sort}`
+    
+  }
+  if (sort && !topic){
+    path+= `sort_by=${sort}`
+  }
+  if(order){
+    path+=`&order=${order}`
+  }
+  console.log(path)
+  return axios.get(path);
 };
 
 const fetchComments = (id) => {
