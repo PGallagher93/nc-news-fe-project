@@ -7,21 +7,22 @@ const TopicArticles = ({articles, setArticleQuery, errorMessage, isLoading}) => 
     const {topic} = useParams()
     
     useEffect(()=>{
-        console.log("here")
+        
         setArticleQuery((currVal)=>{
             return {...currVal, topic:topic}
         })
 
     }, [topic])
-    console.log(articles, "artis")
-    // if(isLoading === true){
-    //     return <p>Loading...</p>
-    // }
-    if(Object.keys(errorMessage).length !== 0){
+    
+    if(isLoading === true){
+        
+        return <p>Loading...</p>
+    }
+    else if(Object.keys(errorMessage).length !== 0){
         return <p>Not Found</p>
     } 
     
-    return (
+   else return (
         <main>
             <TopicBar/>
             <ArticleContainer articles={articles} setArticleQuery={setArticleQuery}/>

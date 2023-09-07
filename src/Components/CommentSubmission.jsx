@@ -7,6 +7,9 @@ const CommentSubmission = ({user, setArticleComments, article_id, setCommentAdde
     const [isPosting, setIsPosting] = useState(false)
     const [commentPosted, setCommentPosted] = useState(false)
     const [isError, setIsError] = useState(false)
+    
+    
+    
     const handleCommentSubmit = (e) =>{
         e.preventDefault()
         setCommentPosted(false)

@@ -3,7 +3,6 @@ import { patchArticleVotes } from '../api'
 
 const SingleArticleContainer = ({singleArticle, article_id}) => {
       const [articleVotes, setArticlevotes] = useState(0)
-      const [isClicked, setIsClicked] = useState(false)
       const [upvoteClicked, setUpvoteClicked] = useState(false)
       const [DownvoteClicked, setDownvoteClicked] = useState(false)
       const [isError, setIsError] = useState(false)
