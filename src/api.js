@@ -1,26 +1,9 @@
 import axios from "axios";
 
 const fetchArticles = ({sort, topic, order}) => {
-  let path = `https://nc-news-app-bch2.onrender.com/api/articles`
-  if(topic || sort || order){
-    path += `?`
-  }
   
-  if (topic){
-    path+= `topic=${topic}`
-  }
-  if(sort && topic){
-    path += `&sort_by=${sort}`
-    
-  }
-  if (sort && !topic){
-    path+= `sort_by=${sort}`
-  }
-  if(order){
-    path+=`&order=${order}`
-  }
-  console.log(path)
-  return axios.get(path);
+  return axios.get(`https://nc-news-app-bch2.onrender.com/api/articles`,
+  {params:{sort_by:sort, topic:topic, order:order}});
 };
 
 const fetchComments = (id) => {
@@ -48,4 +31,9 @@ const postComment = (id, commentBody, user) =>{
     return axios.post(`https://nc-news-app-bch2.onrender.com/api/articles/${id}/comments`, {username: `${user}`, body: `${commentBody}`})
 }
 
-export { fetchArticles, fetchComments, fetchSingleArticle, patchArticleVotes, postComment, fetchTopics };
+const deleteComment = (id) =>{
+  
+  return axios.delete(`https://nc-news-app-bch2.onrender.com/api/comments/${id}`)
+}
+
+export { fetchArticles, fetchComments, fetchSingleArticle, patchArticleVotes, postComment, fetchTopics, deleteComment};
