@@ -1,8 +1,11 @@
 import ArticleCard from "./ArticleCard"
+import SortOptions from "./SortOptions"
 
-const ArticleContainer = ({articles}) =>{
+const ArticleContainer = ({articles, setArticleQuery}) =>{
    
     return (
+        <div className="article-container">
+        <SortOptions setArticleQuery ={setArticleQuery} />
         <ul className="article-list">
             {articles.map((article)=>{
                 
@@ -11,6 +14,7 @@ const ArticleContainer = ({articles}) =>{
                )           
             })}
         </ul>
+        </div>
     )
 }
 
