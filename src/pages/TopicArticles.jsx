@@ -1,9 +1,10 @@
-import TopicBar from "../Components/TopicBar";
+
 import ArticleContainer from "../Components/ArticleContainer";
-import {useParams} from "react-router-dom"
+import {useParams, Navigate} from "react-router-dom"
 import {useEffect} from 'react'
 
-const TopicArticles = ({articles, setArticleQuery, errorMessage, isLoading}) => {
+
+const TopicArticles = ({articles, setArticleQuery, errorMessage, }) => {
     const {topic} = useParams()
     
     useEffect(()=>{
@@ -14,17 +15,14 @@ const TopicArticles = ({articles, setArticleQuery, errorMessage, isLoading}) => 
 
     }, [topic])
     
-    if(isLoading === true){
-        
-        return <p>Loading...</p>
-    }
-    else if(Object.keys(errorMessage).length !== 0){
-        return <p>Not Found</p>
+   
+    if(Object.keys(errorMessage).length !== 0){
+        return (<Navigate to="/404" />)
     } 
     
    else return (
         <main>
-            <TopicBar/>
+            
             <ArticleContainer articles={articles} setArticleQuery={setArticleQuery}/>
         </main>
     )

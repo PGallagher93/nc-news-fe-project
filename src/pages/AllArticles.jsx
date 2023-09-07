@@ -1,18 +1,19 @@
-import TopicBar from "../Components/TopicBar"
 import ArticleContainer from "../Components/ArticleContainer.jsx"
 import {useEffect} from 'react'
 
 
-const AllArticles = ({articles, articleQuery, setArticleQuery}) => {
+const AllArticles = ({isLoading, articles, articleQuery, setArticleQuery}) => {
   
     useEffect(()=>{
       setArticleQuery({sort:null, topic:null, order:null})
     }, [])
     
-    
+    // if(isLoading){
+    //     return <p>Loading...</p>
+    // }
     return(
         <main>
-            <TopicBar />
+            
             <ArticleContainer articles={articles} setArticleQuery={setArticleQuery}/>
         </main>
     )

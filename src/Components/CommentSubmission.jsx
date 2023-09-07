@@ -1,12 +1,13 @@
 import {useState} from 'react'
 import { postComment } from '../api'
 
-const CommentSubmission = ({user, setArticleComments, article_id, setCommentAdded}) =>{
+const CommentSubmission = ({user, setArticleComments, article_id, setCommentAdded, errorMessage, setErrorMessage}) =>{
     
     const [commentInput, setCommentInput] = useState("")
     const [isPosting, setIsPosting] = useState(false)
     const [commentPosted, setCommentPosted] = useState(false)
     const [isError, setIsError] = useState(false)
+    const [commentErrorMsg, setCommentErrorMsg]= useState({})
     
     
     
@@ -23,8 +24,13 @@ const CommentSubmission = ({user, setArticleComments, article_id, setCommentAdde
             setArticleComments((curr) =>{
                 return [...curr, newComment]
             })
-        }).catch(()=>{
+        }).catch((err)=>{
+            
+          if(err.code==="ERR_NETWORK"){
             setIsError(true)
+            setIsPosting(false)
+          }else 
+           setCommentErrorMsg(err.response.data)
             setIsPosting(false)
         })}
         setCommentInput("")
@@ -37,6 +43,9 @@ const CommentSubmission = ({user, setArticleComments, article_id, setCommentAdde
     }
     if(isError){
         commentSuccess = <p>Failed to post comment</p>
+    }
+    if(commentErrorMsg.msg){
+        commentSuccess= <p>Please log in to comment</p>
     }
     
     if (!isPosting) {return (

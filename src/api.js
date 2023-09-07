@@ -26,7 +26,6 @@ const patchArticleVotes = (id, votes) => {
     { inc_votes: `${votes}` }
   );
 };
-
 const postComment = (id, commentBody, user) =>{
     return axios.post(`https://nc-news-app-bch2.onrender.com/api/articles/${id}/comments`, {username: `${user}`, body: `${commentBody}`})
 }

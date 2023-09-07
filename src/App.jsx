@@ -6,6 +6,10 @@ import AllArticles from './pages/AllArticles'
 import {fetchArticles} from './api'
 import SingleArticle from './pages/SingleArticle'
 import TopicArticles from './pages/TopicArticles'
+import TopicBar from './Components/TopicBar'
+import Homepage from './pages/Homepage'
+import ErrorPage404 from './pages/ErrorPage404'
+import ErrorPage400 from './pages/ErrorPage400'
 
 function App() {
   const [isLoading, setIsLoading] = useState(false)
@@ -29,9 +33,14 @@ function App() {
   return (
     <>
      <Header />
+     <TopicBar/>
      <Routes>
-      <Route path = "/articles" element ={<AllArticles articles={articles} setArticleQuery ={setArticleQuery}/>}/>
-      <Route path ="/articles/:article_id" element = {<SingleArticle articles = {articles} isLoading = {isLoading} setIsLoading ={setIsLoading} user={user}/>}/>
+      <Route path ="/400" element={<ErrorPage400 />}/>
+      <Route path="/404" element = {<ErrorPage404/>}/>
+      <Route path = '*' element ={<Homepage articles={articles}/>}/> 
+      <Route path="/" element ={<Homepage articles={articles}/>}/>
+      <Route path = "/articles" element ={<AllArticles isLoading={isLoading} articles={articles} setArticleQuery ={setArticleQuery}/>}/>
+      <Route path ="/articles/:article_id" element = {<SingleArticle isLoading = {isLoading} setIsLoading ={setIsLoading} user={user} errorMessage={errorMessage} setErrorMessage={setErrorMessage}/>}/>
       <Route path = "/:topic/articles" element = {<TopicArticles articles={articles} isLoading={isLoading} setArticleQuery={setArticleQuery} errorMessage={errorMessage}/>}/>
      </Routes>
     </>
