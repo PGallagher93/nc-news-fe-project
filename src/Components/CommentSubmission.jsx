@@ -50,7 +50,7 @@ const CommentSubmission = ({user, setArticleComments, article_id, setCommentAdde
     
     if (!isPosting) {return (
         <form className="comment-submit" onSubmit={handleCommentSubmit}>
-            <textarea value = {commentInput} onChange ={(e) => {
+            <textarea className="comment-body-entry" value = {commentInput} onChange ={(e) => {
                 setCommentInput(e.target.value)
             }}></textarea>
             <button id="comment-submit-button">Comment</button>
