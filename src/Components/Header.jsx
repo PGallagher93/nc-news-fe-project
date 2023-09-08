@@ -2,8 +2,9 @@ import NavBar from "./NavBar"
 const Header = () =>{
     return (
         <header>
-            <NavBar />
             <h3>NC NEWS</h3>
+            <NavBar />
+            
         </header>
     )
 }
