@@ -10,7 +10,7 @@ const SingleArticleContainer = ({singleArticle, article_id}) => {
         setArticlevotes(singleArticle.votes)
       }, [])
     
-
+      console.log(singleArticle)
     const handleUpvote = (e) =>{
         
         if(!upvoteClicked) {
@@ -48,6 +48,10 @@ const SingleArticleContainer = ({singleArticle, article_id}) => {
                 <p>By {singleArticle.author}</p>
                 
             </section>
+            <section>
+                <p>{singleArticle.body}</p>
+            </section>
+
             <section className="single-article-votes">
                 <p>Votes: {articleVotes} </p>
                 <button onClick={(e)=> {

@@ -2,7 +2,7 @@ import ArticleCard from "./ArticleCard"
 import SortOptions from "./SortOptions"
 
 const ArticleContainer = ({articles, setArticleQuery}) =>{
-   
+   console.log(articles)
     return (
         <div className="article-container">
         <SortOptions setArticleQuery ={setArticleQuery} />
