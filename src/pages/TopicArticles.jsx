@@ -4,7 +4,7 @@ import {useParams, Navigate} from "react-router-dom"
 import {useEffect} from 'react'
 
 
-const TopicArticles = ({articles, setArticleQuery, errorMessage, }) => {
+const TopicArticles = ({articles, setArticleQuery, errorMessage, isLoading }) => {
     const {topic} = useParams()
     
     useEffect(()=>{
@@ -15,7 +15,9 @@ const TopicArticles = ({articles, setArticleQuery, errorMessage, }) => {
 
     }, [topic])
     
-   
+   if(isLoading){
+    return <p>Loading...</p>
+   }
     if(Object.keys(errorMessage).length !== 0){
         return (<Navigate to="/404" />)
     } 

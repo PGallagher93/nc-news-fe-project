@@ -8,9 +8,9 @@ const AllArticles = ({isLoading, articles, articleQuery, setArticleQuery}) => {
       setArticleQuery({sort:null, topic:null, order:null})
     }, [])
     
-    // if(isLoading){
-    //     return <p>Loading...</p>
-    // }
+    if(isLoading){
+        return <p>Loading...</p>
+    }
     return(
         <main>
             
