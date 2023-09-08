@@ -1,4 +1,4 @@
-Latest deployed version: https://pgncnews.netlify.app
+Link to latest deployed version: https://pgncnews.netlify.app
 
 This app will be using API calls from a backend situated at: https://github.com/PGallagher93/be-nc-news-project
 
