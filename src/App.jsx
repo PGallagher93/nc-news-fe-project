@@ -14,7 +14,7 @@ import ErrorPage400 from './pages/ErrorPage400'
 function App() {
   const [isLoading, setIsLoading] = useState(false)
   const [articles, setArticles] = useState([])
-  const [user, setUser] = useState('')
+  const [user, setUser] = useState('cooljmessy')
   const [articleQuery, setArticleQuery] = useState({sort:null, topic:null, order:null})
   const [errorMessage, setErrorMessage] = useState({})
   
@@ -37,7 +37,7 @@ function App() {
      <Routes>
       <Route path ="/400" element={<ErrorPage400 />}/>
       <Route path="/404" element = {<ErrorPage404/>}/>
-      <Route path = '*' element ={<Homepage articles={articles}/>}/> 
+      <Route path = '*' element ={<ErrorPage404/>}/> 
       <Route path="/" element ={<Homepage articles={articles}/>}/>
       <Route path = "/articles" element ={<AllArticles isLoading={isLoading} articles={articles} setArticleQuery ={setArticleQuery}/>}/>
       <Route path ="/articles/:article_id" element = {<SingleArticle isLoading = {isLoading} setIsLoading ={setIsLoading} user={user} errorMessage={errorMessage} setErrorMessage={setErrorMessage}/>}/>
