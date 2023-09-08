@@ -45,7 +45,7 @@ const CommentSubmission = ({user, setArticleComments, article_id, setCommentAdde
         commentSuccess = <p>Failed to post comment</p>
     }
     if(commentErrorMsg.msg){
-        commentSuccess= <p>Please log in to comment</p>
+        commentSuccess= <p>Failed to post comment: No current user</p>
     }
     
     if (!isPosting) {return (
