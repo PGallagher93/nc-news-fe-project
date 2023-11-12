@@ -1,5 +1,5 @@
 import {Link} from 'react-router-dom'
-import * as React from 'react';
+import {useState, useEffect} from 'react'
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
@@ -12,19 +12,39 @@ import FormControlLabel from '@mui/material/FormControlLabel';
 import FormGroup from '@mui/material/FormGroup';
 import MenuItem from '@mui/material/MenuItem';
 import Menu from '@mui/material/Menu';
+import { Dropdown } from '@mui/base/Dropdown'
+import { fetchTopics } from '../api';
+
 
 const NavBar = () =>{
   
-  const [anchorEl, setAnchorEl] = React.useState(null);
+  const [linksActivated, setLinksActivated] = useState(false)
+  const [anchorEl, setAnchorEl] = useState(null);
+  const [profileMenuActivated, setProfileMenuActivated] = useState(false)
+  const [topics, setTopics] = useState([])
+  useEffect(()=>{
+      fetchTopics().then((res)=>{
+          setTopics(res.data.topics)
+      })
 
- 
+  }, [])
 
   const handleMenu = (event) => {
+    setProfileMenuActivated(true)
     setAnchorEl(event.currentTarget);
   };
 
+  const handleLinks = (event) => {
+    
+    setAnchorEl(event.currentTarget)
+    setLinksActivated(true)
+
+  }
+
   const handleClose = () => {
+    setLinksActivated(false)
     setAnchorEl(null);
+    setProfileMenuActivated(false)
   };
 
   return (
@@ -32,15 +52,43 @@ const NavBar = () =>{
     
       <AppBar position="static">
         <Toolbar>
+          <Dropdown>
+          
           <IconButton
             size="large"
             edge="start"
             color="inherit"
             aria-label="menu"
             sx={{ mr: 2 }}
+            onClick={handleLinks}
           >
             <MenuIcon />
           </IconButton>
+          <Menu
+                id="menu-appbar"
+                anchorEl={anchorEl}
+                anchorOrigin={{
+                  vertical: 'bottom',
+                  horizontal: 'right',
+                }}
+                keepMounted
+                transformOrigin={{
+                  vertical: 'top',
+                  horizontal: 'right',
+                }}
+                open={Boolean(linksActivated)}
+                onClose={handleClose}
+              >
+                {topics.map((topic)=>{
+                  return (
+                    <Link key={topic.slug} to={`/${topic.slug}/articles`}>
+                    <MenuItem onClick = {handleClose}>{topic.slug}</MenuItem>
+                    </Link>
+                  )
+                })}
+                
+              </Menu>
+          </Dropdown>
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
            NC News
           </Typography>
@@ -60,7 +108,7 @@ const NavBar = () =>{
                 id="menu-appbar"
                 anchorEl={anchorEl}
                 anchorOrigin={{
-                  vertical: 'top',
+                  vertical: 'bottom',
                   horizontal: 'right',
                 }}
                 keepMounted
@@ -68,7 +116,7 @@ const NavBar = () =>{
                   vertical: 'top',
                   horizontal: 'right',
                 }}
-                open={Boolean(anchorEl)}
+                open={Boolean(profileMenuActivated)}
                 onClose={handleClose}
               >
                 <MenuItem onClick={handleClose}>Profile</MenuItem>
