@@ -40,6 +40,9 @@ input{
   
   
 }
+main {
+  padding-top:4rem ;
+}
 
 ul{
   list-style: none;
