@@ -79,10 +79,13 @@ const NavBar = () =>{
                 open={Boolean(linksActivated)}
                 onClose={handleClose}
               >
+                  <Link to= {`/`}>
+                    <MenuItem onClick = {handleClose}>Home</MenuItem>
+                  </Link>
                 {topics.map((topic)=>{
                   return (
                     <Link key={topic.slug} to={`/${topic.slug}/articles`}>
-                    <MenuItem onClick = {handleClose}>{topic.slug}</MenuItem>
+                      <MenuItem onClick = {handleClose}>{topic.slug}</MenuItem>
                     </Link>
                   )
                 })}
