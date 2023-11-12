@@ -33,7 +33,6 @@ function App() {
   return (
     <>
      <Header />
-     <TopicBar/>
      <Routes>
       <Route path ="/400" element={<ErrorPage400 />}/>
       <Route path="/404" element = {<ErrorPage404/>}/>
