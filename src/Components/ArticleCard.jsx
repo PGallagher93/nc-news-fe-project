@@ -21,7 +21,7 @@ const ArticleCard = ({article}) => {
                 
             />
             <CardContent
-            width="400">
+            >
                 <Typography variant='h6'>
                     {article.title}
                 </Typography>
