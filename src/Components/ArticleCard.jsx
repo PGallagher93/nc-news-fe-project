@@ -6,6 +6,7 @@ import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 import FavoriteIcon from '@mui/icons-material/Favorite'
 import CommentIcon from '@mui/icons-material/Comment';
+import Box from '@mui/system/Box'
 const ArticleCard = ({article}) => {
     console.log(article)
     return (
@@ -26,16 +27,25 @@ const ArticleCard = ({article}) => {
                     {article.title}
                 </Typography>
             </CardContent>
-            <cardContent 
+            <CardContent 
                 sx={{display:'flex',
                      flexDirection:'row',
                      justifyContent:'space-between',
                     alignItems:'flex-end'}}
             >
-                <FavoriteIcon sx={{margin:1}}/>
-                <Typography>{`${article.votes}`}</Typography>
-                <CommentIcon sx={{margin:1}}/> <Typography>{`${article.comment_count}`}</Typography>
-            </cardContent>
+                <Box
+                    sx={{display:'flex'}}
+                >
+                    <FavoriteIcon sx={{margin:1}}/>
+                    <Typography>{`${article.votes}`}</Typography>
+                </Box>
+                <Box
+                    sx={{display:'flex'}}
+                >
+                    <CommentIcon sx={{margin:1}}/> 
+                    <Typography>{`${article.comment_count}`}</Typography>
+                </Box>
+            </CardContent>
         
         </Card>
         </Link>
