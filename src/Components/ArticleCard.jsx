@@ -27,9 +27,9 @@ const ArticleCard = ({article}) => {
                 </Typography>
             </CardContent>
             <cardContent>
-            <FavoriteIcon sx={{marginRight:1}}/>
+            <FavoriteIcon sx={{margin:1}}/>
                 <strong>{`${article.votes}`}</strong>
-                <CommentIcon sx={{maringRight:1}}/>
+                <CommentIcon sx={{margin:1}}/>
                 <strong>{`${article.comment_count}`}</strong>
             </cardContent>
         
