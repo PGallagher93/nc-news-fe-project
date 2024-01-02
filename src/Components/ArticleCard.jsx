@@ -26,11 +26,15 @@ const ArticleCard = ({article}) => {
                     {article.title}
                 </Typography>
             </CardContent>
-            <cardContent>
-            <FavoriteIcon sx={{margin:1}}/>
-                <strong>{`${article.votes}`}</strong>
-                <CommentIcon sx={{margin:1}}/>
-                <strong>{`${article.comment_count}`}</strong>
+            <cardContent 
+                sx={{display:'flex',
+                     flexDirection:'row',
+                     justifyContent:'space-between',
+                    alignItems:'flex-end'}}
+            >
+                <FavoriteIcon sx={{margin:1}}/>
+                <Typography>{`${article.votes}`}</Typography>
+                <CommentIcon sx={{margin:1}}/> <Typography>{`${article.comment_count}`}</Typography>
             </cardContent>
         
         </Card>
