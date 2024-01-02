@@ -30,19 +30,19 @@ const ArticleCard = ({article}) => {
             <CardContent 
                 sx={{display:'flex',
                      flexDirection:'row',
-                     justifyContent:'space-between',
-                    alignItems:'flex-end'}}
+                     justifyContent:'space-between'
+                    }}
             >
                 <Box
                     sx={{display:'flex'}}
                 >
-                    <FavoriteIcon sx={{margin:1}}/>
+                    <FavoriteIcon sx={{marginRight:1}}/>
                     <Typography>{`${article.votes}`}</Typography>
                 </Box>
                 <Box
                     sx={{display:'flex'}}
                 >
-                    <CommentIcon sx={{margin:1}}/> 
+                    <CommentIcon sx={{marginRight:1}}/> 
                     <Typography>{`${article.comment_count}`}</Typography>
                 </Box>
             </CardContent>
