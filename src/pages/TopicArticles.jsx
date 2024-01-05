@@ -25,7 +25,7 @@ const TopicArticles = ({articles, setArticleQuery, errorMessage, isLoading }) =>
    else return (
         <main>
             
-            <ArticleContainer articles={articles} setArticleQuery={setArticleQuery}/>
+            <ArticleContainer articles={articles} setArticleQuery={setArticleQuery} />
         </main>
     )
 }

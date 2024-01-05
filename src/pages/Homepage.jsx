@@ -1,5 +1,7 @@
+import { Typography } from "@mui/material"
 import HomeArticleContainer from "../Components/HomeArticleContainer"
-
+import Box from '@mui/system/Box'
+import TopicBar from "../Components/TopicBar"
 const Homepage =({articles, isLoading}) =>{
    
     const articlesToDisplay = articles.slice(0, 10)
@@ -9,10 +11,17 @@ const Homepage =({articles, isLoading}) =>{
         )
     }
     return (
-        <main>
-        <h2>Latest stories</h2>
+        <Box sx={{pt:'4rem',
+                  display:'flex',
+                  flexDirection:'column',
+                  justifyContent:'center'
+                  }}>
+        <Typography 
+        variant="h3"
+        align="center"
+        >Latest stories</Typography>
         <HomeArticleContainer articles={articlesToDisplay}/>
-        </main>
+        </Box>
     )
 }
 
