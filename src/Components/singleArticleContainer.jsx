@@ -59,15 +59,15 @@ const SingleArticleContainer = ({singleArticle, article_id}) => {
                 <CardMedia
                     component="img"
                     src={singleArticle.article_img_url}
-                    sx={{width:{xs:'100%', md:'50%'},
-                         height:{xs:'30vh', md:'50vh'},
+                    sx={{height:{xs:'30vh', md:'50vh'},
                         objectFit:'cover',
                         aspectRatio:'1/1',
                         }}>
                 </CardMedia>
                 </Stack>
-                <CardContent>
-                    <Typography></Typography>
+                <CardContent sx={{px:{xs:'0.5', md:'0'},
+                                  py:'1'}}>
+                    <Typography>{singleArticle.body}</Typography>
                 </CardContent>
             </Card>
         </Box>
