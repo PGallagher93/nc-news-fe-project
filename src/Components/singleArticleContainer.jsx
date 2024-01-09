@@ -74,12 +74,16 @@ const SingleArticleContainer = ({singleArticle, article_id}) => {
                                   justifyContent:'space-between',
                                   flexDirection:'row'}}>
                     <Stack direction='row'>
-                        <IconButton>
+                        <IconButton onClick={(e)=> {
+                    
+                    handleUpvote(e)
+                }}>
                             <ThumbUp/>
                         </IconButton>
                         <Typography sx={{pt:1}}>{articleVotes}</Typography>
                         <IconButton>
-                            <ThumbDown/>
+                            <ThumbDown onClick={(e)=>{
+                    handleDownvote(e)}}/>
                         </IconButton>
                     </Stack>
                 </CardActions>
