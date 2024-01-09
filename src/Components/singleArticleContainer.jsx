@@ -1,6 +1,7 @@
 import {useState, useEffect} from 'react'
 import { patchArticleVotes } from '../api'
-import { Box, Card, CardContent, CardMedia, Stack, Typography } from '@mui/material'
+import { Box, Card, CardActions, CardContent, CardMedia, IconButton, Stack, Typography } from '@mui/material'
+import { ThumbDown, ThumbUp } from '@mui/icons-material'
 
 const SingleArticleContainer = ({singleArticle, article_id}) => {
       const [articleVotes, setArticlevotes] = useState(0)
@@ -69,8 +70,24 @@ const SingleArticleContainer = ({singleArticle, article_id}) => {
                                   py:'1'}}>
                     <Typography>{singleArticle.body}</Typography>
                 </CardContent>
+                <CardActions sx={{display:'flex', 
+                                  justifyContent:'space-between',
+                                  flexDirection:'row'}}>
+                    <Stack direction='row'>
+                        <IconButton>
+                            <ThumbUp/>
+                        </IconButton>
+                        <Typography sx={{pt:1}}>{articleVotes}</Typography>
+                        <IconButton>
+                            <ThumbDown/>
+                        </IconButton>
+                    </Stack>
+                </CardActions>
             </Card>
         </Box>
+    //     <IconButton color="secondary" aria-label="add an alarm">
+    //     <AlarmIcon />
+    //   </IconButton>
 //         <article className="single-article">
 //             <h2>{singleArticle.title}</h2>
 //             <p className="article-date">Posted on {singleArticle.created_at.substr(0,10)}</p>
