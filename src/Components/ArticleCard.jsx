@@ -12,7 +12,7 @@ const ArticleCard = ({article}) => {
     return (
     <li className = "article-card">
         <Link to={`/articles/${article.article_id}`}>
-        <Card sx={{ width: {sm: '75vw', md:'50vw'}, 
+        <Card sx={{ width: {xs: '75vw', md:'50vw'}, 
                     margin: 2}}>
             <CardMedia
                 component="img"
