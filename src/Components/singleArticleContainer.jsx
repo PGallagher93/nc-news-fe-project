@@ -1,6 +1,6 @@
 import {useState, useEffect} from 'react'
 import { patchArticleVotes } from '../api'
-import { Box, Card, CardContent, Typography } from '@mui/material'
+import { Box, Card, CardContent, CardMedia, Stack, Typography } from '@mui/material'
 
 const SingleArticleContainer = ({singleArticle, article_id}) => {
       const [articleVotes, setArticlevotes] = useState(0)
@@ -40,20 +40,35 @@ const SingleArticleContainer = ({singleArticle, article_id}) => {
     
     return (
         <Box>
-            <Card>
-                <CardContent>
+            <Card sx={{px: {xs:'0', md: '5rem'}}}>
+                <CardContent sx={{textAlign:'center'}}>
                    <Typography variant='h5'>
                     {singleArticle.title}
                    </Typography>
                 </CardContent>
-                <cardContent>
+                <Stack direction='row' justifyContent='space-between' padding='1rem'>
                     <Typography>
-                      
+                      By {singleArticle.author}
                     </Typography>
                     <Typography>
+                      Date posted: {singleArticle.created_at.substr(0,10)}
+                    </Typography>
 
-                    </Typography>
-                </cardContent>
+                </Stack>
+                <Stack alignItems='center'>
+                <CardMedia
+                    component="img"
+                    src={singleArticle.article_img_url}
+                    sx={{width:{xs:'100%', md:'50%'},
+                         height:{xs:'30vh', md:'50vh'},
+                        objectFit:'cover',
+                        aspectRatio:'1/1',
+                        }}>
+                </CardMedia>
+                </Stack>
+                <CardContent>
+                    <Typography></Typography>
+                </CardContent>
             </Card>
         </Box>
 //         <article className="single-article">
