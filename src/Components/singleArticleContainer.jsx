@@ -16,8 +16,7 @@ const SingleArticleContainer = ({singleArticle, article_id}) => {
     const handleUpvote = (e) =>{
         
         if(!upvoteClicked) {
-            e.target.classList.add("vote-button-clicked")
-            e.currentTarget.parentNode.childNodes[2].classList.remove("vote-button-clicked")
+            
             setUpvoteClicked(true)
             setDownvoteClicked(false)
             setArticlevotes(articleVotes + 1)
@@ -25,12 +24,32 @@ const SingleArticleContainer = ({singleArticle, article_id}) => {
                 setIsError(true)
              })}
         }
+        const handleVote = (e, type) =>{
+        
+            if(!upvoteClicked && type === 'upvote') {
+                
+                setUpvoteClicked(true)
+                setDownvoteClicked(false)
+                setArticlevotes(articleVotes + 1)
+                patchArticleVotes(article_id, 1).catch(() =>{
+                    setIsError(true)
+                 })}
+            else if(!DownvoteClicked && type === 'downvote') {
+                setDownvoteClicked(true)
+                setUpvoteClicked(false)
+                setArticlevotes(articleVotes - 1)
+                patchArticleVotes(article_id, -1).catch(() =>{
+                    setIsError(true)
+                 })}
+            }
+
+        
+            
 
         const handleDownvote = (e) =>{
             
             if(!DownvoteClicked) {
-                e.target.classList.add("vote-button-clicked")
-                e.currentTarget.parentNode.childNodes[1].classList.remove("vote-button-clicked")
+                
                 setDownvoteClicked(true)
                 setUpvoteClicked(false)
                 setArticlevotes(articleVotes - 1)
@@ -76,14 +95,14 @@ const SingleArticleContainer = ({singleArticle, article_id}) => {
                     <Stack direction='row'>
                         <IconButton onClick={(e)=> {
                     
-                    handleUpvote(e)
+                    handleVote(e, 'upvote')
                 }}>
                             <ThumbUp/>
                         </IconButton>
                         <Typography sx={{pt:1}}>{articleVotes}</Typography>
                         <IconButton>
                             <ThumbDown onClick={(e)=>{
-                    handleDownvote(e)}}/>
+                    handleVote(e, 'downvote')}}/>
                         </IconButton>
                     </Stack>
                 </CardActions>
