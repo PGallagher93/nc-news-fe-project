@@ -18,9 +18,9 @@ const CommentsContainer = ({article_id, user, errorMessage, setErrorMessage}) =>
     
     return (
         <div id="comments">
-            <CommentSubmission  article_id={article_id} user={user} setArticleComments={setArticleComments} setCommentAdded={setCommentAdded} />
+            
             <CommentList setCommentDeleted={setCommentDeleted} articleComments={articleComments} user={user}/>
-
+            <CommentSubmission  article_id={article_id} user={user} setArticleComments={setArticleComments} setCommentAdded={setCommentAdded} />
         </div>
     )
 }

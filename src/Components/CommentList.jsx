@@ -7,7 +7,7 @@ const CommentList = ({articleComments, user, setCommentDeleted}) =>{
     const sortedComments = articleComments.sort((a, b) => a.created_at - b.created_at)
     
        
-   return( <ul className="comment-list">
+   return( <div>
         {
     
         sortedComments.map((comment)=>{
@@ -15,7 +15,7 @@ const CommentList = ({articleComments, user, setCommentDeleted}) =>{
                 <CommentCard key={comment.comment_id} setCommentDeleted ={setCommentDeleted} comment = {comment} user={user}/>
             )
         })}
-    </ul>
+    </div>
    )
 }
 
