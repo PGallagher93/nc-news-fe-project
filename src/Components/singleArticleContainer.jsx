@@ -1,19 +1,21 @@
 import {useState, useEffect} from 'react'
 import { patchArticleVotes } from '../api'
 import { Box, Card, CardActions, CardContent, CardMedia, IconButton, Stack, Typography } from '@mui/material'
-import { ThumbDown, ThumbUp } from '@mui/icons-material'
+import { ThumbDown, ThumbUp} from '@mui/icons-material'
+import CommentIcon from '@mui/icons-material/Comment'
+
 
 const SingleArticleContainer = ({singleArticle, article_id}) => {
       const [articleVotes, setArticlevotes] = useState(0)
       const [upvoteClicked, setUpvoteClicked] = useState(false)
       const [downvoteClicked, setDownvoteClicked] = useState(false)
       const [isError, setIsError] = useState(false)
-      const [prevVote, setPrevVote] = useState(null)
+      
       useEffect(()=>{
         setArticlevotes(singleArticle.votes)
       }, [])
     
-      
+      console.log(singleArticle)
         const handleVote = (e, type, vote) =>{
             
             upvoteClicked ? vote -= 1 : downvoteClicked ? vote += 1 : vote === vote
@@ -100,44 +102,18 @@ const SingleArticleContainer = ({singleArticle, article_id}) => {
                         </IconButton>
                     </Stack>
                     <Stack direction='row'>
-                        <IconButton>
-                            
+                        <IconButton color='primary'>
+                           <CommentIcon /> 
                         </IconButton>
+                        <Typography sx={{pt:1}}>{singleArticle.votes}</Typography>
                     </Stack>
 
                 </CardActions>
+                {isError && (
+  <p className="error"> Unable to add vote, please try again later! </p>)}
             </Card>
         </Box>
-    //     <IconButton color="secondary" aria-label="add an alarm">
-    //     <AlarmIcon />
-    //   </IconButton>
-//         <article className="single-article">
-//             <h2>{singleArticle.title}</h2>
-//             <p className="article-date">Posted on {singleArticle.created_at.substr(0,10)}</p>
-//             <figure className = "single-article-img-figure">
-//                 <img src={singleArticle.article_img_url} alt = {singleArticle.title} className="single-article-img"/>
-//             </figure>
-//             <section>
-//                 <p>By {singleArticle.author}</p>
-                
-//             </section>
-//             <section>
-//                 <p>{singleArticle.body}</p>
-//             </section>
-
-//             <section className="single-article-votes">
-//                 <p>Votes: {articleVotes} </p>
-//                 <button onClick={(e)=> {
-                    
-//                     handleUpvote(e)
-//                 }}>Upvote</button>
-//                 <button onClick={(e)=>{
-//                     handleDownvote(e)}}>Downvote</button>
-                
-//             </section>
-//             {isError && (
-//   <p className="error"> Unable to add vote, please try again later! </p>)}
-//         </article>
+   
     )
 }
 
