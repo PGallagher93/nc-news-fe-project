@@ -6,57 +6,52 @@ import { ThumbDown, ThumbUp } from '@mui/icons-material'
 const SingleArticleContainer = ({singleArticle, article_id}) => {
       const [articleVotes, setArticlevotes] = useState(0)
       const [upvoteClicked, setUpvoteClicked] = useState(false)
-      const [DownvoteClicked, setDownvoteClicked] = useState(false)
+      const [downvoteClicked, setDownvoteClicked] = useState(false)
       const [isError, setIsError] = useState(false)
+      const [prevVote, setPrevVote] = useState(null)
       useEffect(()=>{
         setArticlevotes(singleArticle.votes)
       }, [])
     
-      console.log(singleArticle)
-    const handleUpvote = (e) =>{
-        
-        if(!upvoteClicked) {
+      
+        const handleVote = (e, type, vote) =>{
             
-            setUpvoteClicked(true)
-            setDownvoteClicked(false)
-            setArticlevotes(articleVotes + 1)
-            patchArticleVotes(article_id, 1).catch(() =>{
-                setIsError(true)
-             })}
-        }
-        const handleVote = (e, type) =>{
-        
+            upvoteClicked ? vote -= 1 : downvoteClicked ? vote += 1 : vote === vote
             if(!upvoteClicked && type === 'upvote') {
                 
                 setUpvoteClicked(true)
                 setDownvoteClicked(false)
-                setArticlevotes(articleVotes + 1)
-                patchArticleVotes(article_id, 1).catch(() =>{
+                setArticlevotes(articleVotes + vote)
+                patchArticleVotes(article_id, vote).catch(() =>{
                     setIsError(true)
                  })}
-            else if(!DownvoteClicked && type === 'downvote') {
-                setDownvoteClicked(true)
+             else if(upvoteClicked && type === 'upvote'){
                 setUpvoteClicked(false)
                 setArticlevotes(articleVotes - 1)
                 patchArticleVotes(article_id, -1).catch(() =>{
                     setIsError(true)
-                 })}
-            }
+                 })
 
-        
-            
-
-        const handleDownvote = (e) =>{
-            
-            if(!DownvoteClicked) {
-                
+             }
+            else if(!downvoteClicked && type === 'downvote') {
                 setDownvoteClicked(true)
                 setUpvoteClicked(false)
-                setArticlevotes(articleVotes - 1)
-                patchArticleVotes(article_id, -1).catch(() =>{
+                setArticlevotes(articleVotes + vote)
+                patchArticleVotes(article_id, vote).catch(() =>{
                     setIsError(true)
                  })}
+
+                 else if(downvoteClicked && type === 'downvote'){
+                    setDownvoteClicked(false)
+                    setArticlevotes(articleVotes + 1)
+                    patchArticleVotes(article_id, 1).catch(() =>{
+                        setIsError(true)
+                     })
+    
+                 }
             }
+            
+
     
     return (
         <Box>
@@ -95,14 +90,14 @@ const SingleArticleContainer = ({singleArticle, article_id}) => {
                     <Stack direction='row'>
                         <IconButton onClick={(e)=> {
                     
-                    handleVote(e, 'upvote')
+                    handleVote(e, 'upvote', 1)
                 }}>
                             <ThumbUp/>
                         </IconButton>
                         <Typography sx={{pt:1}}>{articleVotes}</Typography>
                         <IconButton>
                             <ThumbDown onClick={(e)=>{
-                    handleVote(e, 'downvote')}}/>
+                    handleVote(e, 'downvote', -1)}}/>
                         </IconButton>
                     </Stack>
                 </CardActions>
