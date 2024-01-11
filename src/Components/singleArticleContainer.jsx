@@ -88,18 +88,23 @@ const SingleArticleContainer = ({singleArticle, article_id}) => {
                                   justifyContent:'space-between',
                                   flexDirection:'row'}}>
                     <Stack direction='row'>
-                        <IconButton onClick={(e)=> {
-                    
-                    handleVote(e, 'upvote', 1)
-                }}>
+                        <IconButton color= {upvoteClicked ? 'success' : 'secondary'} onClick={(e)=> {
+                            handleVote(e, 'upvote', 1)
+                            }}>
                             <ThumbUp/>
                         </IconButton>
                         <Typography sx={{pt:1}}>{articleVotes}</Typography>
-                        <IconButton onClick={(e)=>{
-                    handleVote(e, 'downvote', -1)}}>
+                        <IconButton color={downvoteClicked ? 'error' : 'secondary'} onClick={(e)=>{
+                            handleVote(e, 'downvote', -1)}}>
                             <ThumbDown />
                         </IconButton>
                     </Stack>
+                    <Stack direction='row'>
+                        <IconButton>
+                            
+                        </IconButton>
+                    </Stack>
+
                 </CardActions>
             </Card>
         </Box>
