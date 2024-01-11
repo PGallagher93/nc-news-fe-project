@@ -95,9 +95,9 @@ const SingleArticleContainer = ({singleArticle, article_id}) => {
                             <ThumbUp/>
                         </IconButton>
                         <Typography sx={{pt:1}}>{articleVotes}</Typography>
-                        <IconButton>
-                            <ThumbDown onClick={(e)=>{
-                    handleVote(e, 'downvote', -1)}}/>
+                        <IconButton onClick={(e)=>{
+                    handleVote(e, 'downvote', -1)}}>
+                            <ThumbDown />
                         </IconButton>
                     </Stack>
                 </CardActions>
