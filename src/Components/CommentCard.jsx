@@ -13,7 +13,7 @@ const CommentCard = ({comment, user, setCommentDeleted}) =>{
 }
     return (
         <Card>
-            <CardContent>
+            <CardContent sx={{display:'flex', justifyContent:'space-between'}}>
                 <Typography>{comment.author}</Typography>
                 <Typography>{timeAgo(comment.created_at.substring(0,10))}</Typography>
             </CardContent>
