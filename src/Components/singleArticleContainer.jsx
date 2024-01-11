@@ -102,7 +102,12 @@ const SingleArticleContainer = ({singleArticle, article_id}) => {
                         </IconButton>
                     </Stack>
                     <Stack direction='row'>
-                        <IconButton color='secondary'>
+                        <IconButton color='secondary' onClick={() =>
+                            document.querySelector("#comments").scrollIntoView({
+                            behavior: "smooth",
+                            
+                            })
+                        }>
                            <CommentIcon /> 
                         </IconButton>
                         <Typography sx={{pt:1}}>{singleArticle.comment_count}</Typography>
