@@ -15,7 +15,7 @@ const SingleArticleContainer = ({singleArticle, article_id}) => {
         setArticlevotes(singleArticle.votes)
       }, [])
     
-      console.log(singleArticle)
+      console.log(singleArticle, "<in container")
         const handleVote = (e, type, vote) =>{
             
             upvoteClicked ? vote -= 1 : downvoteClicked ? vote += 1 : vote === vote
@@ -102,10 +102,10 @@ const SingleArticleContainer = ({singleArticle, article_id}) => {
                         </IconButton>
                     </Stack>
                     <Stack direction='row'>
-                        <IconButton color='primary'>
+                        <IconButton color='secondary'>
                            <CommentIcon /> 
                         </IconButton>
-                        <Typography sx={{pt:1}}>{singleArticle.votes}</Typography>
+                        <Typography sx={{pt:1}}>{singleArticle.comment_count}</Typography>
                     </Stack>
 
                 </CardActions>

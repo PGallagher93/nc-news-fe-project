@@ -1,12 +1,11 @@
 import {Link} from 'react-router-dom'
 import Card from '@mui/material/Card';
-import CardHeader from '@mui/material/CardHeader';
 import CardMedia from '@mui/material/CardMedia';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
-import FavoriteIcon from '@mui/icons-material/Favorite'
 import CommentIcon from '@mui/icons-material/Comment';
 import Box from '@mui/system/Box'
+import { ThumbUp } from '@mui/icons-material';
 const ArticleCard = ({article}) => {
     console.log(article)
     return (
@@ -36,13 +35,13 @@ const ArticleCard = ({article}) => {
                 <Box
                     sx={{display:'flex'}}
                 >
-                    <FavoriteIcon sx={{marginRight:1}}/>
+                    <ThumbUp color='secondary' sx={{marginRight:1}}/>
                     <Typography>{`${article.votes}`}</Typography>
                 </Box>
                 <Box
                     sx={{display:'flex'}}
                 >
-                    <CommentIcon sx={{marginRight:1}}/> 
+                    <CommentIcon color ='secondary' sx={{marginRight:1}}/> 
                     <Typography>{`${article.comment_count}`}</Typography>
                 </Box>
             </CardContent>

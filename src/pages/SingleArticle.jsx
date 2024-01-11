@@ -22,6 +22,8 @@ const SingleArticle = ({errorMessage, setErrorMessage, isLoading, setIsLoading, 
             setErrorMessage(err.response.data)
         })
     },[])
+
+    console.log(singleArticle, "<< in page")
     if(errorMessage.msg){
         
         if(errorMessage.msg === "not found"){
