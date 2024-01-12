@@ -2,6 +2,7 @@ import {useState, useEffect} from 'react'
 import CommentList from './CommentList'
 import {fetchComments} from '../api'
 import CommentSubmission from './CommentSubmission'
+import { Stack, Typography } from '@mui/material'
 
 
 const CommentsContainer = ({article_id, user, errorMessage, setErrorMessage}) =>{
@@ -17,11 +18,11 @@ const CommentsContainer = ({article_id, user, errorMessage, setErrorMessage}) =>
 
     
     return (
-        <div id="comments">
-            
+        <Stack alignItems='center'>
+            <Typography variant='h5'>comments</Typography>
             <CommentList setCommentDeleted={setCommentDeleted} articleComments={articleComments} user={user}/>
             <CommentSubmission  article_id={article_id} user={user} setArticleComments={setArticleComments} setCommentAdded={setCommentAdded} />
-        </div>
+        </Stack>
     )
 }
 
