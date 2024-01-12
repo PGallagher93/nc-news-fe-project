@@ -1,5 +1,5 @@
 
-import { Card, CardContent, Typography } from "@mui/material"
+import { Card, CardActions, CardContent, Typography } from "@mui/material"
 import { deleteComment } from "../api"
 import { timeAgo } from "../utils"
 
@@ -12,11 +12,19 @@ const CommentCard = ({comment, user, setCommentDeleted}) =>{
     })
 }
     return (
-        <Card>
+        <Card sx={{mx: {xs:'0', md: '5rem'},
+                   my:1,
+                   boxShadow:3}}>
             <CardContent sx={{display:'flex', justifyContent:'space-between'}}>
                 <Typography>{comment.author}</Typography>
-                <Typography>{timeAgo(comment.created_at.substring(0,10))}</Typography>
+                <Typography color="text.secondary">{timeAgo(comment.created_at.substring(0,10))}</Typography>
             </CardContent>
+            <CardContent >
+                <Typography sx={{px:1}}>{comment.body}</Typography>
+            </CardContent>
+            <CardActions>
+                
+            </CardActions>
         </Card>
         // <li className="comment-card">
         //     <section className="comment-body">
