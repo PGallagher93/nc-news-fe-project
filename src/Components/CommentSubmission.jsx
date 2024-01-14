@@ -1,6 +1,6 @@
 import {useState} from 'react'
 import { postComment } from '../api'
-import { Box, Button, TextField } from '@mui/material'
+import { Box, Button, Snackbar, TextField } from '@mui/material'
 
 const CommentSubmission = ({user, setArticleComments, article_id, setCommentAdded, errorMessage, setErrorMessage}) =>{
     
@@ -9,11 +9,16 @@ const CommentSubmission = ({user, setArticleComments, article_id, setCommentAdde
     const [commentPosted, setCommentPosted] = useState(false)
     const [isError, setIsError] = useState(false)
     const [commentErrorMsg, setCommentErrorMsg]= useState({})
+    const [open, setOpen] = useState(false)
     
-    
+    const handleClose = () => {
+        setOpen(false)
+        setIsError(false)
+    }
     
     const handleCommentSubmit = (e) =>{
         e.preventDefault()
+        setOpen(true)
         setCommentPosted(false)
         if(commentInput !== ""){
         setIsPosting(true)
@@ -30,24 +35,16 @@ const CommentSubmission = ({user, setArticleComments, article_id, setCommentAdde
           if(err.code==="ERR_NETWORK"){
             setIsError(true)
             setIsPosting(false)
+            setCommentErrorMsg("No connection, failed to post")
           }else 
-           setCommentErrorMsg(err.response.data)
+           setCommentErrorMsg("Failed to post, please ensure you're logged in")
             setIsPosting(false)
+            setIsError(true)
         })}
         setCommentInput("")
 
     }
-    let commentSuccess
-
-    if(commentPosted){
-        commentSuccess = <p>Comment posted</p>
-    }
-    if(isError){
-        commentSuccess = <p>Failed to post comment</p>
-    }
-    if(commentErrorMsg.msg){
-        commentSuccess= <p>Failed to post comment: No current user</p>
-    }
+   
     
     if (!isPosting) {return (
         <Box  sx={{display:'flex',
@@ -63,15 +60,21 @@ const CommentSubmission = ({user, setArticleComments, article_id, setCommentAdde
             <Button variant='text' color='secondary' onClick={(e) => {
                 handleCommentSubmit(e)
             }}>Add comment</Button>
-            
+            <Snackbar open ={open}
+                      onClose={handleClose}
+                      autoHideDuration={6000}
+                      message={isPosting? "Posting comment..." : commentPosted ? "Comment posted!" : ""}
+                      anchorOrigin={ {vertical: 'top', horizontal: 'center'} }/>
+            <Snackbar open ={isError}
+                      onClose={handleClose}
+                      autoHideDuration={6000}
+                      message={`${commentErrorMsg}`}
+                      anchorOrigin={ {vertical: 'top', horizontal: 'center'} }/>
+                      
         </Box>
        
     )}
-    else if (isPosting) {
-        return (
-            <p>Posting comment...</p>
-        )
-    }
+    
 
 }
 
