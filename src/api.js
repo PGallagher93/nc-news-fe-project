@@ -35,4 +35,9 @@ const deleteComment = (id) =>{
   return axios.delete(`https://nc-news-app-bch2.onrender.com/api/comments/${id}`)
 }
 
-export { fetchArticles, fetchComments, fetchSingleArticle, patchArticleVotes, postComment, fetchTopics, deleteComment};
+const patchCommentVotes = (id, votes) => {
+  return axios.patch(`https://nc-news-app-bch2.onrender.com/api/comments/${id}`, {inc_votes: `${votes}`})
+
+  
+}
+export { fetchArticles, fetchComments, fetchSingleArticle, patchArticleVotes, postComment, fetchTopics, deleteComment, patchCommentVotes};
