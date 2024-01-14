@@ -5,6 +5,7 @@ import {
   Stack,
   Typography,
   IconButton,
+  Button,
 } from "@mui/material";
 import { deleteComment } from "../api";
 import { timeAgo } from "../utils";
@@ -12,8 +13,9 @@ import ArrowUpwardIcon from "@mui/icons-material/ArrowUpward";
 import ArrowDownwardIcon from "@mui/icons-material/ArrowDownward";
 import { useState, useEffect } from "react";
 import { patchCommentVotes } from "../api";
+
 const CommentCard = ({ comment, user, setCommentDeleted }) => {
-  console.log(comment);
+ 
   const [commentVotes, setCommentVotes] = useState(0);
   const [upvoteClicked, setUpvoteClicked] = useState(false);
   const [downvoteClicked, setDownvoteClicked] = useState(false);
@@ -55,6 +57,8 @@ const CommentCard = ({ comment, user, setCommentDeleted }) => {
   const handleCommentDeletion = (id) => {
     deleteComment(id).then(() => {
       setCommentDeleted(id);
+    }).catch(() => {
+        setIsError(true)
     });
   };
   return (
@@ -92,23 +96,18 @@ const CommentCard = ({ comment, user, setCommentDeleted }) => {
             <ArrowDownwardIcon />
           </IconButton>
         </Stack>
+        {comment.author === user &&
+        <Stack direction = 'row'>
+            <Button variant="text" color="secondary" onClick={(e)=>{
+                handleCommentDeletion(comment.comment_id)
+            }}>DELETE</Button>
+        </Stack>}
       </CardActions>
       {isError && (
         <p className="error"> Unable to add vote, please try again later! </p>
       )}
     </Card>
-    // <li className="comment-card">
-    //     <section className="comment-body">
-    //         <p className="comment-author">{comment.author}</p>
-    //         <p>{comment.body}</p>
-    //         <p className="comment-date">Posted at: {comment.created_at.substring(0,10)}</p>
-    //     </section>
-    //     <p className="comment-votes">Votes: {comment.votes}</p>
-    //     {comment.author === user &&
-    //     <button onClick={() =>{handleCommentDeletion(comment.comment_id)}}>Delete</button>
-    //     }
-
-    // </li>
+    
   );
 };
 

@@ -23,7 +23,7 @@ const SingleArticle = ({errorMessage, setErrorMessage, isLoading, setIsLoading, 
         })
     },[])
 
-    console.log(singleArticle, "<< in page")
+    
     if(errorMessage.msg){
         
         if(errorMessage.msg === "not found"){
@@ -41,7 +41,7 @@ const SingleArticle = ({errorMessage, setErrorMessage, isLoading, setIsLoading, 
    else if (singleArticle.title) return (
         <main>
             <SingleArticleContainer singleArticle={singleArticle} article_id ={article_id}/>
-            <CommentsContainer article_id={article_id} user={user} />
+            <CommentsContainer article_id={article_id} user={user} articleCommentCount={singleArticle.comment_count} />
         </main>
     )
 

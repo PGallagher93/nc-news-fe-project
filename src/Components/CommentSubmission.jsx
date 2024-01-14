@@ -1,5 +1,6 @@
 import {useState} from 'react'
 import { postComment } from '../api'
+import { Box, Button, TextField } from '@mui/material'
 
 const CommentSubmission = ({user, setArticleComments, article_id, setCommentAdded, errorMessage, setErrorMessage}) =>{
     
@@ -49,13 +50,22 @@ const CommentSubmission = ({user, setArticleComments, article_id, setCommentAdde
     }
     
     if (!isPosting) {return (
-        <form className="comment-submit" onSubmit={handleCommentSubmit}>
-            <textarea className="comment-body-entry" value = {commentInput} onChange ={(e) => {
+        <Box  sx={{display:'flex',
+                  flexDirection:'column',
+                  justifyContent:'space-between',
+                  px:{xs:'0', md:'5rem'},
+                  py:'4rem'}}
+                id='comment-submission'>
+            
+            <TextField  label="Comment" variant="outlined" multiline onChange={(e) =>{
                 setCommentInput(e.target.value)
-            }}></textarea>
-            <button id="comment-submit-button">Comment</button>
-            {commentSuccess}
-        </form>
+            }}/>
+            <Button variant='text' color='secondary' onClick={(e) => {
+                handleCommentSubmit(e)
+            }}>Add comment</Button>
+            
+        </Box>
+       
     )}
     else if (isPosting) {
         return (

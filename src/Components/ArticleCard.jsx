@@ -7,7 +7,7 @@ import CommentIcon from '@mui/icons-material/Comment';
 import Box from '@mui/system/Box'
 import { ThumbUp } from '@mui/icons-material';
 const ArticleCard = ({article}) => {
-    console.log(article)
+    
     return (
     <li className = "article-card">
         <Link to={`/articles/${article.article_id}`}>

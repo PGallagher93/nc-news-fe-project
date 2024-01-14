@@ -6,7 +6,7 @@ import { Typography } from "@mui/material"
 
 const ArticleContainer = ({articles, setArticleQuery}) =>{
    const {topic} = useParams()
-   console.log(topic)
+   
     return (
         <Box sx= {{display:"flex",
         flexDirection:'column',

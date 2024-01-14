@@ -2,10 +2,12 @@ import {useState, useEffect} from 'react'
 import CommentList from './CommentList'
 import {fetchComments} from '../api'
 import CommentSubmission from './CommentSubmission'
-import { Stack, Typography } from '@mui/material'
+import { Button, Stack, Typography } from '@mui/material'
+import Box from '@mui/system/Box'
 
 
-const CommentsContainer = ({article_id, user, errorMessage, setErrorMessage}) =>{
+const CommentsContainer = ({article_id, user, articleCommentCount}) =>{
+    
     const [commentAdded, setCommentAdded] = useState("")
     const [articleComments, setArticleComments]=useState([])
     const [commentDeleted, setCommentDeleted] = useState("")
@@ -18,12 +20,20 @@ const CommentsContainer = ({article_id, user, errorMessage, setErrorMessage}) =>
 
     
     return (
-        <Stack alignItems='center'>
-            <Typography variant='h5'>comments</Typography>
+        <Box id='comments' sx={{pt:'4rem'}}>
+            <Stack direction='row' justifyContent="space-between" sx={{px:{xs:'0', md:"5rem"}}}>
+                <Typography variant='h5'>comments {articleCommentCount}</Typography>
+                <Button variant='text' color='secondary' onClick={() =>
+                document.querySelector("#comment-submission").scrollIntoView({
+                  behavior: "smooth",
+                })
+              }>Add comment</Button>
+            </Stack>
             <CommentList setCommentDeleted={setCommentDeleted} articleComments={articleComments} user={user}/>
             <CommentSubmission  article_id={article_id} user={user} setArticleComments={setArticleComments} setCommentAdded={setCommentAdded} />
-        </Stack>
+        </Box>
     )
 }
 
 export default CommentsContainer
+
