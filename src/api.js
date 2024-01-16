@@ -40,4 +40,8 @@ const patchCommentVotes = (id, votes) => {
 
   
 }
-export { fetchArticles, fetchComments, fetchSingleArticle, patchArticleVotes, postComment, fetchTopics, deleteComment, patchCommentVotes};
+
+const fetchUsers = () => {
+  return axios.get(`https://nc-news-app-bch2.onrender.com/api/users`)
+}
+export { fetchArticles, fetchComments, fetchSingleArticle, fetchUsers, patchArticleVotes, postComment, fetchTopics, deleteComment, patchCommentVotes};

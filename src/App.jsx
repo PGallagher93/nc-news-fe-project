@@ -10,7 +10,7 @@ import TopicBar from "./Components/TopicBar";
 import Homepage from "./pages/Homepage";
 import ErrorPage404 from "./pages/ErrorPage404";
 import ErrorPage400 from "./pages/ErrorPage400";
-import AccountPage from "./pages/AccountPage";
+import LoginPage from "./pages/LoginPage";
 
 function App() {
   const [isLoading, setIsLoading] = useState(false);
@@ -86,9 +86,9 @@ function App() {
             />
           }
         />
-        <Route path="/account"
+        <Route path="/login"
                element={
-                <AccountPage/>
+                <LoginPage/>
                }/>
       </Routes>
     </>
