@@ -2,7 +2,7 @@ import CommentCard from "./CommentCard"
 
 const CommentList = ({articleComments, user, setCommentDeleted}) =>{
     
-   
+   console.log(user, "<< comment list")
   
     const sortedComments = articleComments.sort((a, b) => a.created_at - b.created_at)
     

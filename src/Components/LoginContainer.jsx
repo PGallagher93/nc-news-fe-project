@@ -2,14 +2,21 @@ import { Box, ImageList, ImageListItem, ImageListItemBar, ListItemButton, Typogr
 import { fetchUsers} from "../api"
 import {useEffect, useState} from "react"
 
-const LoginPage = () => {
+const LoginContainer = ({setUser}) => {
     const [allUsers, setAllUsers] = useState([])
     useEffect(()=>{
         fetchUsers()
           .then((res)=>{
             setAllUsers(res.data.users)
+          }).catch((err) => {
+            console.log(err)
           })
     }, [])
+
+  // const handleLogin = (e, user) =>{
+  //         e.preventDefault()
+  //         setUser({username: user.username, avatar_url: user.avatar_url})
+  // }
 
     console.log(allUsers)
     return (
@@ -19,7 +26,9 @@ const LoginPage = () => {
             {allUsers.map((user) => {
                 return (
                 <ImageListItem  key={user.username}>
-                    <ListItemButton sx={{maxHeight: {xs: '10rem', md: '20rem'}}} >
+                    <ListItemButton sx={{maxHeight: {xs: '10rem', md: '20rem'}}} 
+                    // onClick={(e) => {handleLogin(e, user)}}
+                    >
                     <img 
                       srcSet={user.avatar_url}
                       alt={user.username}
@@ -42,4 +51,4 @@ const LoginPage = () => {
     </Box>
 )}
 
-export default LoginPage
+export default LoginContainer

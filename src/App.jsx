@@ -11,6 +11,7 @@ import Homepage from "./pages/Homepage";
 import ErrorPage404 from "./pages/ErrorPage404";
 import ErrorPage400 from "./pages/ErrorPage400";
 import LoginPage from "./pages/LoginPage";
+import AccountPage from "./pages/AccountPage";
 
 function App() {
   const [isLoading, setIsLoading] = useState(false);
@@ -86,9 +87,9 @@ function App() {
             />
           }
         />
-        <Route path="/login"
+        <Route path="/account"
                element={
-                <LoginPage/>
+                <AccountPage/>
                }/>
       </Routes>
     </>
