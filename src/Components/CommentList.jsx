@@ -1,8 +1,8 @@
 import CommentCard from "./CommentCard"
 
-const CommentList = ({articleComments, user, setCommentDeleted}) =>{
+const CommentList = ({articleComments, username, setCommentDeleted}) =>{
     
-   console.log(user, "<< comment list")
+   
   
     const sortedComments = articleComments.sort((a, b) => a.created_at - b.created_at)
     
@@ -12,7 +12,7 @@ const CommentList = ({articleComments, user, setCommentDeleted}) =>{
     
         sortedComments.map((comment)=>{
             return (
-                <CommentCard key={comment.comment_id} setCommentDeleted ={setCommentDeleted} comment = {comment} user={user}/>
+                <CommentCard key={comment.comment_id} setCommentDeleted ={setCommentDeleted} comment = {comment} username={username}/>
             )
         })}
     </div>

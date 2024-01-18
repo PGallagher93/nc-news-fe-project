@@ -14,7 +14,7 @@ import ArrowDownwardIcon from "@mui/icons-material/ArrowDownward";
 import { useState, useEffect } from "react";
 import { patchCommentVotes } from "../api";
 
-const CommentCard = ({ comment, user, setCommentDeleted }) => {
+const CommentCard = ({ comment, username, setCommentDeleted }) => {
  
   const [commentVotes, setCommentVotes] = useState(0);
   const [upvoteClicked, setUpvoteClicked] = useState(false);
@@ -96,7 +96,7 @@ const CommentCard = ({ comment, user, setCommentDeleted }) => {
             <ArrowDownwardIcon />
           </IconButton>
         </Stack>
-        {comment.author === user &&
+        {comment.author === username &&
         <Stack direction = 'row'>
             <Button variant="text" color="secondary" onClick={(e)=>{
                 handleCommentDeletion(comment.comment_id)

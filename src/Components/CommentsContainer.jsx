@@ -6,7 +6,7 @@ import { Button, Stack, Typography } from '@mui/material'
 import Box from '@mui/system/Box'
 
 
-const CommentsContainer = ({article_id, user, articleCommentCount}) =>{
+const CommentsContainer = ({article_id, username, articleCommentCount}) =>{
     
     const [commentAdded, setCommentAdded] = useState("")
     const [articleComments, setArticleComments]=useState([])
@@ -29,8 +29,8 @@ const CommentsContainer = ({article_id, user, articleCommentCount}) =>{
                 })
               }>Add comment</Button>
             </Stack>
-            <CommentList setCommentDeleted={setCommentDeleted} articleComments={articleComments} user={user}/>
-            <CommentSubmission  article_id={article_id} user={user} setArticleComments={setArticleComments} setCommentAdded={setCommentAdded} />
+            <CommentList setCommentDeleted={setCommentDeleted} articleComments={articleComments} username={username}/>
+            <CommentSubmission  article_id={article_id} username={username} setArticleComments={setArticleComments} setCommentAdded={setCommentAdded} />
         </Box>
     )
 }

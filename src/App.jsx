@@ -10,13 +10,12 @@ import TopicBar from "./Components/TopicBar";
 import Homepage from "./pages/Homepage";
 import ErrorPage404 from "./pages/ErrorPage404";
 import ErrorPage400 from "./pages/ErrorPage400";
-import LoginPage from "./pages/LoginPage";
 import AccountPage from "./pages/AccountPage";
 
 function App() {
   const [isLoading, setIsLoading] = useState(false);
   const [articles, setArticles] = useState([]);
-  const [user, setUser] = useState("cooljmessy");
+  const [user, setUser] = useState({username:"cooljmessy", userAvatar:null});
   const [articleQuery, setArticleQuery] = useState({
     sort: null,
     topic: null,
@@ -70,7 +69,7 @@ function App() {
             <SingleArticle
               isLoading={isLoading}
               setIsLoading={setIsLoading}
-              user={user}
+              username={user.username}
               errorMessage={errorMessage}
               setErrorMessage={setErrorMessage}
             />
@@ -89,7 +88,7 @@ function App() {
         />
         <Route path="/account"
                element={
-                <AccountPage/>
+                <AccountPage user={user}/>
                }/>
       </Routes>
     </>

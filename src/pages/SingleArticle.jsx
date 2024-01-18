@@ -4,7 +4,7 @@ import {fetchSingleArticle} from '../api'
 import SingleArticleContainer from "../Components/singleArticleContainer"
 import CommentsContainer from "../Components/CommentsContainer"
 
-const SingleArticle = ({errorMessage, setErrorMessage, isLoading, setIsLoading, user}) =>{
+const SingleArticle = ({errorMessage, setErrorMessage, isLoading, setIsLoading, username}) =>{
    
     const {article_id} = useParams()
  
@@ -41,7 +41,7 @@ const SingleArticle = ({errorMessage, setErrorMessage, isLoading, setIsLoading, 
    else if (singleArticle.title) return (
         <main>
             <SingleArticleContainer singleArticle={singleArticle} article_id ={article_id}/>
-            <CommentsContainer article_id={article_id} user={user} articleCommentCount={singleArticle.comment_count} />
+            <CommentsContainer article_id={article_id} username={username} articleCommentCount={singleArticle.comment_count} />
         </main>
     )
 

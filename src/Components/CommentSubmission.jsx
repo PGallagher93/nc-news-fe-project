@@ -3,7 +3,7 @@ import { postComment } from "../api";
 import { Box, Button, Snackbar, TextField } from "@mui/material";
 
 const CommentSubmission = ({
-  user,
+  username,
   setArticleComments,
   article_id,
   setCommentAdded,
@@ -28,7 +28,7 @@ const CommentSubmission = ({
     setCommentPosted(false);
     if (commentInput !== "") {
       setIsPosting(true);
-      postComment(article_id, commentInput, user)
+      postComment(article_id, commentInput, username)
         .then((res) => {
           const newComment = res.data.comment[0];
           setIsPosting(false);
