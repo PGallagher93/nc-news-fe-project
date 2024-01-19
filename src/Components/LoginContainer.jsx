@@ -13,12 +13,14 @@ const LoginContainer = ({setUser}) => {
           })
     }, [])
 
-  // const handleLogin = (e, user) =>{
-  //         e.preventDefault()
-  //         setUser({username: user.username, avatar_url: user.avatar_url})
-  // }
+  const handleLogin = (e, user) =>{
+          e.preventDefault()
+          setUser({username: user.username, avatar_url: user.avatar_url})
+            localStorage.setItem('username', user.username)
+            localStorage.setItem('avatar', user.avatar_url)
+  }
 
-    console.log(allUsers)
+    console.log("hi")
     return (
     <Box sx={{pt:'4rem'}}>
         <Typography variant="h3" align="center">Select your user</Typography>
@@ -27,7 +29,7 @@ const LoginContainer = ({setUser}) => {
                 return (
                 <ImageListItem  key={user.username}>
                     <ListItemButton sx={{maxHeight: {xs: '10rem', md: '20rem'}}} 
-                    // onClick={(e) => {handleLogin(e, user)}}
+                    onClick={(e) => {handleLogin(e, user)}}
                     >
                     <img 
                       srcSet={user.avatar_url}

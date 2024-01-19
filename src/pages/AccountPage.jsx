@@ -3,12 +3,12 @@ import LoginContainer from "../Components/LoginContainer"
 import UserContainer from "../Components/UserContainer"
 
 
-const AccountPage = ({user}) => {
+const AccountPage = ({user, setUser}) => {
     
     return (
     <Box >
-       {user === '' ? 
-       <LoginContainer/> :
+       {user.username === '' ? 
+       <LoginContainer setUser={setUser}/> :
        <UserContainer user={user} />}
     </Box>
 )}

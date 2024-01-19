@@ -15,7 +15,7 @@ import AccountPage from "./pages/AccountPage";
 function App() {
   const [isLoading, setIsLoading] = useState(false);
   const [articles, setArticles] = useState([]);
-  const [user, setUser] = useState({username:"cooljmessy", userAvatar:null});
+  const [user, setUser] = useState({username:"", userAvatar:null});
   const [articleQuery, setArticleQuery] = useState({
     sort: null,
     topic: null,
@@ -35,6 +35,16 @@ function App() {
         setErrorMessage(err.response.data);
       });
   }, [articleQuery]);
+
+  useEffect(()=>{
+    
+    !localStorage.getItem('username') ? setUser({username: localStorage.getItem('username'), userAvatar: localStorage.getItem('avatar')}) :
+    setUser({username: "", userAvatar:null})
+  },[])
+
+  useEffect(()=>{
+
+  })
 
   return (
     <>
@@ -88,7 +98,7 @@ function App() {
         />
         <Route path="/account"
                element={
-                <AccountPage user={user}/>
+                <AccountPage user={user} setUser={setUser}/>
                }/>
       </Routes>
     </>

@@ -7,7 +7,7 @@ import CommentsContainer from "../Components/CommentsContainer"
 const SingleArticle = ({errorMessage, setErrorMessage, isLoading, setIsLoading, username}) =>{
    
     const {article_id} = useParams()
- 
+     console.log(username)
     const [singleArticle, setSingleArticle] = useState({})
     
 
