@@ -38,7 +38,7 @@ function App() {
 
   useEffect(()=>{
     
-    !localStorage.getItem('username') ? setUser({username: localStorage.getItem('username'), userAvatar: localStorage.getItem('avatar')}) :
+    localStorage.getItem('username') ? setUser({username: localStorage.getItem('username'), userAvatar: localStorage.getItem('avatar')}) :
     setUser({username: "", userAvatar:null})
   },[])
 

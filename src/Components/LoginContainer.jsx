@@ -1,6 +1,7 @@
 import { Box, ImageList, ImageListItem, ImageListItemBar, ListItemButton, Typography } from "@mui/material"
 import { fetchUsers} from "../api"
 import {useEffect, useState} from "react"
+import { Link } from 'react-router-dom';
 
 const LoginContainer = ({setUser}) => {
     const [allUsers, setAllUsers] = useState([])
@@ -14,13 +15,13 @@ const LoginContainer = ({setUser}) => {
     }, [])
 
   const handleLogin = (e, user) =>{
-          e.preventDefault()
+         
           setUser({username: user.username, avatar_url: user.avatar_url})
             localStorage.setItem('username', user.username)
             localStorage.setItem('avatar', user.avatar_url)
   }
 
-    console.log("hi")
+    
     return (
     <Box sx={{pt:'4rem'}}>
         <Typography variant="h3" align="center">Select your user</Typography>
@@ -28,8 +29,10 @@ const LoginContainer = ({setUser}) => {
             {allUsers.map((user) => {
                 return (
                 <ImageListItem  key={user.username}>
-                    <ListItemButton sx={{maxHeight: {xs: '10rem', md: '20rem'}}} 
+                    <ListItemButton component={Link} to="/" sx={{maxHeight: {xs: '10rem', md: '20rem'}}} 
                     onClick={(e) => {handleLogin(e, user)}}
+                    
+                   
                     >
                     <img 
                       srcSet={user.avatar_url}

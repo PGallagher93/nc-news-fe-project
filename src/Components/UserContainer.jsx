@@ -1,10 +1,31 @@
-import { Box, Typography } from "@mui/material"
-
+import { Box, Button, ImageListItem, ImageListItemBar, Typography } from "@mui/material"
+import { Link } from 'react-router-dom';
 const UserContainer = ({user}) => {
-    
+    const handleLogout = (e) =>{
+        
+        localStorage.removeItem('username')
+        localStorage.removeItem('avatar')
+    }
     return (
-        <Box sx={{pt:'4rem'}}>
-        <Typography>{user.username}</Typography>
+        <Box sx={{pt:'4rem',
+                  display:'flex',
+                  flexDirection:'column',
+                  alignItems:'center'}}>
+            <ImageListItem>
+                <img
+                   srcSet={user.userAvatar}
+                   alt={user.username}
+                   style={{
+                    width:{xs:'100vw', md: '25vw'},
+                    height:'25vh'
+
+                   }}/>
+                   <ImageListItemBar 
+                   title={user.username}/>
+            </ImageListItem>
+            <Button component={Link} to="/" onClick={(e)=>{handleLogout(e)}}>Logout</Button>
+            
+        
         </Box>
     )
 }
