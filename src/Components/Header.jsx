@@ -1,10 +1,10 @@
 import NavBar from "./NavBar"
 
-const Header = () =>{
+const Header = ({user}) =>{
     return (
         <header>
             
-            <NavBar />
+            <NavBar user={user}/>
             
         </header>
     )

@@ -40,7 +40,7 @@ function App() {
     
     localStorage.getItem('username') ? setUser({username: localStorage.getItem('username'), userAvatar: localStorage.getItem('avatar')}) :
     setUser({username: "", userAvatar:null})
-  },[])
+  },[articleQuery])
 
   useEffect(()=>{
 
@@ -48,7 +48,7 @@ function App() {
 
   return (
     <>
-      <Header />
+      <Header user={user} />
       <Routes>
         <Route path="/400" element={<ErrorPage400 />} />
         <Route path="/404" element={<ErrorPage404 />} />

@@ -13,7 +13,7 @@ import { Dropdown } from '@mui/base/Dropdown'
 import { fetchTopics } from '../api';
 
 
-const NavBar = () =>{
+const NavBar = ({user}) =>{
   
   const [linksActivated, setLinksActivated] = useState(false)
   const [anchorEl, setAnchorEl] = useState(null);
@@ -118,9 +118,13 @@ const NavBar = () =>{
                 }}
                 open={Boolean(profileMenuActivated)}
                 onClose={handleClose}
-              >
-                <MenuItem onClick={handleClose}>Profile</MenuItem>
-                <MenuItem onClick={handleClose}>My account</MenuItem>
+              > <Link to="/account">
+                <MenuItem onClick={user.username === "" ? handleClose : handleClose}>{user.username === "" ? "User selection" : "profile"}</MenuItem>
+                </Link>
+                {user.userAvatar &&
+              
+                <MenuItem onClick={handleClose}>My account</MenuItem>}
+                
               </Menu>
             </div>
           
