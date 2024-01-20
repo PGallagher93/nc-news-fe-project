@@ -120,7 +120,7 @@ const NavBar = ({user}) =>{
                 open={Boolean(profileMenuActivated)}
                 onClose={handleClose}
               > <Link to="/account">
-                <MenuItem onClick={user.username === "" ? handleClose : handleClose}>{user.username === "" ? "User selection" : "profile"}</MenuItem>
+                <MenuItem onClick={ handleClose}>{user.username === "" ? "User selection" : "profile"}</MenuItem>
                 </Link>
                 {user.userAvatar &&
                 <Link to ="/">
