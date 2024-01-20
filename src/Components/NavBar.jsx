@@ -11,6 +11,7 @@ import MenuItem from '@mui/material/MenuItem';
 import Menu from '@mui/material/Menu';
 import { Dropdown } from '@mui/base/Dropdown'
 import { fetchTopics } from '../api';
+import { handleLogout } from '../utils';
 
 
 const NavBar = ({user}) =>{
@@ -122,9 +123,9 @@ const NavBar = ({user}) =>{
                 <MenuItem onClick={user.username === "" ? handleClose : handleClose}>{user.username === "" ? "User selection" : "profile"}</MenuItem>
                 </Link>
                 {user.userAvatar &&
-              
-                <MenuItem onClick={handleClose}>My account</MenuItem>}
-                
+                <Link to ="/">
+                <MenuItem onClick={handleLogout}>Logout</MenuItem>
+                </Link>}
               </Menu>
             </div>
           

@@ -7,3 +7,8 @@ export const timeAgo = (date) => {
 }
 
 
+export const handleLogout = (e) =>{
+        
+    localStorage.removeItem('username')
+    localStorage.removeItem('avatar')
+}

@@ -1,11 +1,8 @@
 import { Box, Button, ImageListItem, ImageListItemBar, Typography } from "@mui/material"
 import { Link } from 'react-router-dom';
+import { handleLogout } from "../utils";
 const UserContainer = ({user}) => {
-    const handleLogout = (e) =>{
-        
-        localStorage.removeItem('username')
-        localStorage.removeItem('avatar')
-    }
+    
     return (
         <Box sx={{pt:'4rem',
                   display:'flex',
