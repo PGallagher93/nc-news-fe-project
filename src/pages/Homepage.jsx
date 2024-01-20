@@ -10,18 +10,22 @@ const matches = useMediaQuery('(min-width:600px)')
         return {...currVal, topic:null}
     })
    }, [])
+   
     const articlesToDisplay = articles.slice(0, 10)
     if(isLoading){
         return (
             <p>Loading...</p>
         )
     }
-    console.log(articlesToDisplay)
+    
+    const mostPopularArticles = articles.sort((a, b) => { return b.votes - a.votes}).slice(0,10)
+   
     return (
         <Box sx={{pt:'4rem',
                   display:'flex',
                   flexDirection:'column',
-                  justifyContent:'center'
+                  justifyContent:'center',
+                  mx:'10rem'
                   }}>
         <Typography 
         variant="h3"
@@ -32,7 +36,32 @@ const matches = useMediaQuery('(min-width:600px)')
                 return (
                     <ImageListItem key={article.title} sx={{width:{md: '19vw'},
                                                             height:{xs:'25vh'}}}>
-                        <ListItemButton sx={{padding: 0, height:'25vh', zIndex:1}}>
+                        <ListItemButton sx={{padding: 0, height:'25vh'}}>
+                            <img 
+                             srcSet={article.article_img_url}
+                             style={{
+                                width:'100%',
+                                height:'100%',
+                                objectFit:'contain'
+                             }}/>
+                             <ImageListItemBar
+                              title={article.title}
+                              subtitle={article.author}/>
+                        </ListItemButton>
+                    </ImageListItem>
+                )
+                
+            })}
+        </ImageList>
+        <Typography
+        variant='h3'
+        alight='left'>Popular stories</Typography>
+        <ImageList cols={matches ? 5 : 1} >
+            {mostPopularArticles.map((article) =>{
+                return (
+                    <ImageListItem key={article.title} sx={{width:{md: '19vw'},
+                                                            height:{xs:'25vh'}}}>
+                        <ListItemButton sx={{padding: 0, height:'25vh'}}>
                             <img 
                              srcSet={article.article_img_url}
                              style={{
