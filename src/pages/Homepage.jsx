@@ -11,27 +11,27 @@ const matches = useMediaQuery('(min-width:600px)')
     })
    }, [])
    
-    const articlesToDisplay = articles.slice(0, 10)
+    const articlesToDisplay = articles.slice(0, 8)
     if(isLoading){
         return (
             <p>Loading...</p>
         )
     }
     
-    const mostPopularArticles = articles.sort((a, b) => { return b.votes - a.votes}).slice(0,10)
+    const mostPopularArticles = articles.sort((a, b) => { return b.votes - a.votes}).slice(0,8)
    
     return (
         <Box sx={{pt:'4rem',
                   display:'flex',
                   flexDirection:'column',
                   justifyContent:'center',
-                  mx:'10rem'
+                  mx:{md: '10rem'}
                   }}>
         <Typography 
         variant="h3"
         align="left"
         >Latest stories</Typography>
-        <ImageList cols={matches ? 5 : 1} >
+        <ImageList cols={matches ? 4 : 1} >
             {articlesToDisplay.map((article) =>{
                 return (
                     <ImageListItem key={article.title} sx={{width:{md: '19vw'},
@@ -56,7 +56,7 @@ const matches = useMediaQuery('(min-width:600px)')
         <Typography
         variant='h3'
         alight='left'>Popular stories</Typography>
-        <ImageList cols={matches ? 5 : 1} >
+        <ImageList cols={matches ? 4 : 1} >
             {mostPopularArticles.map((article) =>{
                 return (
                     <ImageListItem key={article.title} sx={{width:{md: '19vw'},
