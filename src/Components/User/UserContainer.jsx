@@ -3,7 +3,7 @@ import {
   Button,
   ImageListItem,
   ImageListItemBar,
-  Typography,
+  
 } from "@mui/material";
 import { Link } from "react-router-dom";
 import { handleLogout } from "../../utils";
