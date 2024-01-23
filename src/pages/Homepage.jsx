@@ -36,15 +36,14 @@ const matches = useMediaQuery('(min-width:600px)')
         <ImageList cols={matches ? 3 : 1} >
             {articlesToDisplay.map((article) =>{
                 return (
-                    <ImageListItem key={article.title} sx={{width:{md: '17vw'},
-                                                            height:{xs:'25vh'}}}>
+                    <ImageListItem key={article.title} >
                         <ListItemButton component={Link} to={`/articles/${article.article_id}`} sx={{padding: 0, height:'25vh'}}>
                             <img 
                              srcSet={article.article_img_url}
                              style={{
                                 width:'100%',
                                 height:'100%',
-                                objectFit:'contain'
+                               
                              }}/>
                              <ImageListItemBar
                               title={article.title}
@@ -61,15 +60,14 @@ const matches = useMediaQuery('(min-width:600px)')
         <ImageList cols={matches ? 3 : 1} >
             {mostPopularArticles.map((article) =>{
                 return (
-                    <ImageListItem key={article.title} sx={{width:{md: '17vw'},
-                                                            height:{xs:'25vh'}}}>
+                    <ImageListItem key={article.title} >
                         <ListItemButton component={Link} to={`/articles/${article.article_id}`} sx={{padding: 0, height:'25vh'}}>
                             <img 
                              srcSet={article.article_img_url}
                              style={{
                                 width:'100%',
                                 height:'100%',
-                                objectFit:'contain'
+                                
                              }}/>
                              <ImageListItemBar
                               title={article.title}
