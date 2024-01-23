@@ -3,11 +3,12 @@ import {useState, useEffect} from 'react'
 import {fetchSingleArticle} from '../api'
 import SingleArticleContainer from "../Components/singleArticleContainer"
 import CommentsContainer from "../Components/CommentsContainer"
+import { Box, CircularProgress } from "@mui/material"
 
 const SingleArticle = ({errorMessage, setErrorMessage, isLoading, setIsLoading, username}) =>{
    
     const {article_id} = useParams()
-     console.log(username)
+    
     const [singleArticle, setSingleArticle] = useState({})
     
 
@@ -35,9 +36,12 @@ const SingleArticle = ({errorMessage, setErrorMessage, isLoading, setIsLoading, 
         }
     }
     
-    if(isLoading) return (
-        <p>Loading...</p>
-    )
+    if(isLoading){
+        return (<Box sx={{pl:'45%', pt:"20rem"}}>
+            <CircularProgress/>
+            </Box>
+        )
+    }
    else if (singleArticle.title) return (
         <main>
             <SingleArticleContainer singleArticle={singleArticle} article_id ={article_id}/>

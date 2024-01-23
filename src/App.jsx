@@ -100,7 +100,7 @@ function App() {
         />
         <Route path="/account"
                element={
-                <AccountPage user={user} setUser={setUser}/>
+                <AccountPage user={user} setUser={setUser} isLoading={isLoading} setIsLoading={setIsLoading}/>
                }/>
       </Routes>
     </Box>

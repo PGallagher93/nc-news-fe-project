@@ -1,4 +1,4 @@
-import { Typography } from "@mui/material"
+import { Box, CircularProgress, Typography } from "@mui/material"
 import ArticleContainer from "../Components/ArticleContainer.jsx"
 import {useEffect} from 'react'
 
@@ -10,7 +10,11 @@ const AllArticles = ({isLoading, articles, articleQuery, setArticleQuery}) => {
     }, [])
     
     if(isLoading){
-        return <p>Loading...</p>
+        return (<Box sx={{pl:'45%', pt:"20rem"}}>
+            <CircularProgress/>
+            </Box>
+            
+        )
     }
     return(
         <main>
