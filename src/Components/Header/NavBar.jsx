@@ -11,7 +11,7 @@ import Menu from "@mui/material/Menu";
 import { Dropdown } from "@mui/base/Dropdown";
 import { fetchTopics } from "../../api";
 import { handleLogout } from "../../utils";
-import { Avatar } from "@mui/material";
+import { Avatar, Paper } from "@mui/material";
 
 const NavBar = ({ user }) => {
   const [linksActivated, setLinksActivated] = useState(false);
@@ -62,14 +62,10 @@ const NavBar = ({ user }) => {
                 vertical: "bottom",
                 horizontal: "right",
               }}
-              keepMounted
-              transformOrigin={{
-                vertical: "top",
-                horizontal: "right",
-              }}
-              open={Boolean(linksActivated)}
+             open={Boolean(linksActivated)}
               onClose={handleClose}
             >
+              <Paper elevation={0}>
               <Link to={`/`}>
                 <MenuItem onClick={handleClose}>Home</MenuItem>
               </Link>
@@ -83,11 +79,16 @@ const NavBar = ({ user }) => {
                   </Link>
                 );
               })}
+              </Paper>
             </Menu>
           </Dropdown>
+          
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+            <Link to={'/'}>
             NC News
+            </Link>
           </Typography>
+          
 
           <div>
             <IconButton
