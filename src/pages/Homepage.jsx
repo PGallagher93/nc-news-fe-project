@@ -17,7 +17,7 @@ const Homepage = ({ articles, isLoading, setArticleQuery }) => {
       return { ...currVal, topic: null };
     });
   }, []);
-  
+
   const articlesToDisplay = articles.slice(0, 6);
 
   const mostPopularArticles = articles
@@ -26,12 +26,13 @@ const Homepage = ({ articles, isLoading, setArticleQuery }) => {
     })
     .slice(0, 6);
 
-    if(isLoading){
-        return (<Box sx={{pl:'45%', pt:"20rem"}}>
-            <CircularProgress/>
-            </Box>
-        )
-    }
+  if (isLoading) {
+    return (
+      <Box sx={{ pl: "45%", pt: "20rem" }}>
+        <CircularProgress />
+      </Box>
+    );
+  }
 
   return (
     <Box

@@ -12,8 +12,8 @@ import {
 } from "@mui/material";
 import { ThumbDown, ThumbUp } from "@mui/icons-material";
 import CommentIcon from "@mui/icons-material/Comment";
-import { useNavigate } from 'react-router'
-import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
+import { useNavigate } from "react-router";
+import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 
 const SingleArticleContainer = ({ singleArticle, article_id }) => {
   const [articleVotes, setArticlevotes] = useState(0);
@@ -21,12 +21,10 @@ const SingleArticleContainer = ({ singleArticle, article_id }) => {
   const [downvoteClicked, setDownvoteClicked] = useState(false);
   const [isError, setIsError] = useState(false);
 
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   useEffect(() => {
     setArticlevotes(singleArticle.votes);
   }, []);
-
-  
 
   const handleVote = (e, type, vote) => {
     upvoteClicked ? (vote -= 1) : downvoteClicked ? (vote += 1) : vote === vote;
@@ -61,12 +59,10 @@ const SingleArticleContainer = ({ singleArticle, article_id }) => {
 
   return (
     <Box>
-      <IconButton onClick={() => 
-           navigate(-1)
-      }>
-         <ArrowBackIosIcon/>
+      <IconButton onClick={() => navigate(-1)}>
+        <ArrowBackIosIcon />
       </IconButton>
-      <Card sx={{ px: { xs: "0"}, boxShadow: 0 }}>
+      <Card sx={{ px: { xs: "0" }, boxShadow: 0 }}>
         <CardContent sx={{ textAlign: "center" }}>
           <Typography variant="h5">{singleArticle.title}</Typography>
         </CardContent>

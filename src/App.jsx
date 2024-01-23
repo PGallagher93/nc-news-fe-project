@@ -15,7 +15,7 @@ import { Box } from "@mui/material";
 function App() {
   const [isLoading, setIsLoading] = useState(false);
   const [articles, setArticles] = useState([]);
-  const [user, setUser] = useState({username:"", userAvatar:null});
+  const [user, setUser] = useState({ username: "", userAvatar: null });
   const [articleQuery, setArticleQuery] = useState({
     sort: null,
     topic: null,
@@ -36,73 +36,81 @@ function App() {
       });
   }, [articleQuery]);
 
-  useEffect(()=>{
-    
-    localStorage.getItem('username') ? setUser({username: localStorage.getItem('username'), userAvatar: localStorage.getItem('avatar')}) :
-    setUser({username: "", userAvatar:null})
-  },[articleQuery])
+  useEffect(() => {
+    localStorage.getItem("username")
+      ? setUser({
+          username: localStorage.getItem("username"),
+          userAvatar: localStorage.getItem("avatar"),
+        })
+      : setUser({ username: "", userAvatar: null });
+  }, [articleQuery]);
 
-  useEffect(()=>{
-
-  })
+  useEffect(() => {});
 
   return (
     <>
       <Header user={user} />
-      <Box sx={{maxWidth:'1300px' , margin:'auto'}}>
-      <Routes>
-        <Route path="/400" element={<ErrorPage400 />} />
-        <Route path="/404" element={<ErrorPage404 />} />
-        <Route path="*" element={<ErrorPage404 />} />
-        <Route
-          path="/"
-          element={
-            <Homepage
-              articles={articles}
-              isLoading={isLoading}
-              setArticleQuery={setArticleQuery}
-            />
-          }
-        />
-        <Route
-          path="/articles"
-          element={
-            <AllArticles
-              isLoading={isLoading}
-              articles={articles}
-              setArticleQuery={setArticleQuery}
-            />
-          }
-        />
-        <Route
-          path="/articles/:article_id"
-          element={
-            <SingleArticle
-              isLoading={isLoading}
-              setIsLoading={setIsLoading}
-              username={user.username}
-              errorMessage={errorMessage}
-              setErrorMessage={setErrorMessage}
-            />
-          }
-        />
-        <Route
-          path="/:topic/articles"
-          element={
-            <TopicArticles
-              articles={articles}
-              isLoading={isLoading}
-              setArticleQuery={setArticleQuery}
-              errorMessage={errorMessage}
-            />
-          }
-        />
-        <Route path="/account"
-               element={
-                <AccountPage user={user} setUser={setUser} isLoading={isLoading} setIsLoading={setIsLoading}/>
-               }/>
-      </Routes>
-    </Box>
+      <Box sx={{ maxWidth: "1300px", margin: "auto" }}>
+        <Routes>
+          <Route path="/400" element={<ErrorPage400 />} />
+          <Route path="/404" element={<ErrorPage404 />} />
+          <Route path="*" element={<ErrorPage404 />} />
+          <Route
+            path="/"
+            element={
+              <Homepage
+                articles={articles}
+                isLoading={isLoading}
+                setArticleQuery={setArticleQuery}
+              />
+            }
+          />
+          <Route
+            path="/articles"
+            element={
+              <AllArticles
+                isLoading={isLoading}
+                articles={articles}
+                setArticleQuery={setArticleQuery}
+              />
+            }
+          />
+          <Route
+            path="/articles/:article_id"
+            element={
+              <SingleArticle
+                isLoading={isLoading}
+                setIsLoading={setIsLoading}
+                username={user.username}
+                errorMessage={errorMessage}
+                setErrorMessage={setErrorMessage}
+              />
+            }
+          />
+          <Route
+            path="/:topic/articles"
+            element={
+              <TopicArticles
+                articles={articles}
+                isLoading={isLoading}
+                setArticleQuery={setArticleQuery}
+                errorMessage={errorMessage}
+              />
+            }
+          />
+          <Route
+            path="/account"
+            element={
+              <AccountPage
+                user={user}
+                setUser={setUser}
+                isLoading={isLoading}
+                setIsLoading={setIsLoading}
+              />
+            }
+          />
+        </Routes>
+      </Box>
     </>
   );
 }
