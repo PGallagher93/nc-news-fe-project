@@ -8,7 +8,6 @@ import {
   CircularProgress,
 } from "@mui/material";
 import { useEffect } from "react";
-import HomeArticleContainer from "../Components/HomeArticleContainer";
 import Box from "@mui/system/Box";
 import TopicBar from "../Components/TopicBar";
 import { Link } from "react-router-dom";
