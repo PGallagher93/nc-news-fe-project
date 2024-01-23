@@ -81,7 +81,7 @@ const NavBar = ({user}) =>{
                     <MenuItem onClick = {handleClose}>Home</MenuItem>
                   </Link>
                   <Link to ={`/articles`}>
-                      <MenuItem conClick={handleClose}>All</MenuItem>
+                      <MenuItem onClick={handleClose}>All</MenuItem>
                   </Link>
                 {topics.map((topic)=>{
                   return (
