@@ -1,10 +1,4 @@
-import {
-  Box,
-  Button,
-  ImageListItem,
-  ImageListItemBar,
-  
-} from "@mui/material";
+import { Box, Button, ImageListItem, ImageListItemBar } from "@mui/material";
 import { Link } from "react-router-dom";
 import { handleLogout } from "../../utils";
 const UserContainer = ({ user }) => {

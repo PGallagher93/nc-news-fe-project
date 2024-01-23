@@ -42,7 +42,7 @@ const NavBar = ({ user }) => {
 
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static" color="secondary">
+      <AppBar position="static" sx={{backgroundColor: 'black',maxWidth: "1300px", margin: "auto" }}>
         <Toolbar>
           <Dropdown>
             <IconButton
@@ -50,7 +50,7 @@ const NavBar = ({ user }) => {
               edge="start"
               color="inherit"
               aria-label="menu"
-              sx={{ mr: 2 }}
+              sx={{ mr: 2, p:0}}
               onClick={handleLinks}
             >
               <MenuIcon />
@@ -97,6 +97,7 @@ const NavBar = ({ user }) => {
               aria-haspopup="true"
               onClick={handleMenu}
               color="inherit"
+              sx={{p:0}}
             >
               <AccountCircle />
             </IconButton>
