@@ -11,6 +11,7 @@ import Homepage from "./pages/Homepage";
 import ErrorPage404 from "./pages/ErrorPage404";
 import ErrorPage400 from "./pages/ErrorPage400";
 import AccountPage from "./pages/AccountPage";
+import { Box } from "@mui/material";
 
 function App() {
   const [isLoading, setIsLoading] = useState(false);
@@ -49,6 +50,7 @@ function App() {
   return (
     <>
       <Header user={user} />
+      <Box sx={{maxWidth:'1000px' , margin:'auto'}}>
       <Routes>
         <Route path="/400" element={<ErrorPage400 />} />
         <Route path="/404" element={<ErrorPage404 />} />
@@ -101,6 +103,7 @@ function App() {
                 <AccountPage user={user} setUser={setUser}/>
                }/>
       </Routes>
+    </Box>
     </>
   );
 }
