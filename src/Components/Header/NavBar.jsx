@@ -123,11 +123,7 @@ const NavBar = ({ user }) => {
                   {user.username === "" ? "User selection" : "profile"}
                 </MenuItem>
               </Link>
-              {user.userAvatar && (
-                <Link to="/">
-                  <MenuItem onClick={handleLogout}>Logout</MenuItem>
-                </Link>
-              )}
+              
             </Menu>
           </div>
         </Toolbar>
