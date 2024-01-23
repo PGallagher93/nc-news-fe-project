@@ -1,4 +1,4 @@
-import ArticleContainer from "../Components/ArticleContainer";
+import ArticleContainer from "../Components/Articles/ArticleContainer";
 import { useParams, Navigate } from "react-router-dom";
 import { useEffect } from "react";
 import { Box, CircularProgress } from "@mui/material";

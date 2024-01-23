@@ -7,15 +7,14 @@ import {
   IconButton,
   Button,
 } from "@mui/material";
-import { deleteComment } from "../api";
-import { timeAgo } from "../utils";
+import { deleteComment } from "../../api";
+import { timeAgo } from "../../utils";
 import ArrowUpwardIcon from "@mui/icons-material/ArrowUpward";
 import ArrowDownwardIcon from "@mui/icons-material/ArrowDownward";
 import { useState, useEffect } from "react";
-import { patchCommentVotes } from "../api";
+import { patchCommentVotes } from "../../api";
 
 const CommentCard = ({ comment, username, setCommentDeleted }) => {
- 
   const [commentVotes, setCommentVotes] = useState(0);
   const [upvoteClicked, setUpvoteClicked] = useState(false);
   const [downvoteClicked, setDownvoteClicked] = useState(false);
@@ -55,14 +54,16 @@ const CommentCard = ({ comment, username, setCommentDeleted }) => {
     }
   };
   const handleCommentDeletion = (id) => {
-    deleteComment(id).then(() => {
-      setCommentDeleted(id);
-    }).catch(() => {
-        setIsError(true)
-    });
+    deleteComment(id)
+      .then(() => {
+        setCommentDeleted(id);
+      })
+      .catch(() => {
+        setIsError(true);
+      });
   };
   return (
-    <Card sx={{ mx: { xs: "0"}, my: 1, boxShadow: 3 }}>
+    <Card sx={{ mx: { xs: "0" }, my: 1, boxShadow: 3 }}>
       <CardContent sx={{ display: "flex", justifyContent: "space-between" }}>
         <Typography>{comment.author}</Typography>
         <Typography color="text.secondary">
@@ -96,18 +97,24 @@ const CommentCard = ({ comment, username, setCommentDeleted }) => {
             <ArrowDownwardIcon />
           </IconButton>
         </Stack>
-        {comment.author === username &&
-        <Stack direction = 'row'>
-            <Button variant="text" color="secondary" onClick={(e)=>{
-                handleCommentDeletion(comment.comment_id)
-            }}>DELETE</Button>
-        </Stack>}
+        {comment.author === username && (
+          <Stack direction="row">
+            <Button
+              variant="text"
+              color="secondary"
+              onClick={(e) => {
+                handleCommentDeletion(comment.comment_id);
+              }}
+            >
+              DELETE
+            </Button>
+          </Stack>
+        )}
       </CardActions>
       {isError && (
         <p className="error"> Unable to add vote, please try again later! </p>
       )}
     </Card>
-    
   );
 };
 

@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
 import "./App.css";
-import Header from "./Components/Header";
+import Header from "./Components/Header/Header";
 import AllArticles from "./pages/AllArticles";
 import { fetchArticles } from "./api";
 import SingleArticle from "./pages/SingleArticle";

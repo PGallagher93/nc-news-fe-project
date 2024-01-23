@@ -1,8 +1,8 @@
 import { useParams, Navigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { fetchSingleArticle } from "../api";
-import SingleArticleContainer from "../Components/singleArticleContainer";
-import CommentsContainer from "../Components/CommentsContainer";
+import SingleArticleContainer from "../Components/Articles/singleArticleContainer";
+import CommentsContainer from "../Components/Comments/CommentsContainer";
 import { Box, CircularProgress } from "@mui/material";
 
 const SingleArticle = ({

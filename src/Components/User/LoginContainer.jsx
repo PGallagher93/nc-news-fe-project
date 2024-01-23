@@ -7,7 +7,7 @@ import {
   ListItemButton,
   Typography,
 } from "@mui/material";
-import { fetchUsers } from "../api";
+import { fetchUsers } from "../../api";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 

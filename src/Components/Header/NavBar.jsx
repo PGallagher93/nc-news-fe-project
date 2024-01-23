@@ -10,8 +10,8 @@ import AccountCircle from "@mui/icons-material/AccountCircle";
 import MenuItem from "@mui/material/MenuItem";
 import Menu from "@mui/material/Menu";
 import { Dropdown } from "@mui/base/Dropdown";
-import { fetchTopics } from "../api";
-import { handleLogout } from "../utils";
+import { fetchTopics } from "../../api";
+import { handleLogout } from "../../utils";
 
 const NavBar = ({ user }) => {
   const [linksActivated, setLinksActivated] = useState(false);

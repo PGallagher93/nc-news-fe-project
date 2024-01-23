@@ -1,5 +1,5 @@
 import { Box, CircularProgress, Typography } from "@mui/material";
-import ArticleContainer from "../Components/ArticleContainer.jsx";
+import ArticleContainer from "../Components/Articles/ArticleContainer.jsx";
 import { useEffect } from "react";
 
 const AllArticles = ({

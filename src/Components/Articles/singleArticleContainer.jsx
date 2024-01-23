@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { patchArticleVotes } from "../api";
+import { patchArticleVotes } from "../../api";
 import {
   Box,
   Card,

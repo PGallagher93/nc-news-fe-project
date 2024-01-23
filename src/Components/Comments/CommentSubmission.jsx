@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { postComment } from "../api";
+import { postComment } from "../../api";
 import { Box, Button, Snackbar, TextField } from "@mui/material";
 
 const CommentSubmission = ({

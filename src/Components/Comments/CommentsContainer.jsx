@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import CommentList from "./CommentList";
-import { fetchComments } from "../api";
+import { fetchComments } from "../../api";
 import CommentSubmission from "./CommentSubmission";
 import { Button, Stack, Typography } from "@mui/material";
 import Box from "@mui/system/Box";
