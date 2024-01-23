@@ -6,7 +6,6 @@ import AllArticles from "./pages/AllArticles";
 import { fetchArticles } from "./api";
 import SingleArticle from "./pages/SingleArticle";
 import TopicArticles from "./pages/TopicArticles";
-import TopicBar from "./Components/TopicBar";
 import Homepage from "./pages/Homepage";
 import ErrorPage404 from "./pages/ErrorPage404";
 import ErrorPage400 from "./pages/ErrorPage400";

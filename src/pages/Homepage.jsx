@@ -9,7 +9,6 @@ import {
 } from "@mui/material";
 import { useEffect } from "react";
 import Box from "@mui/system/Box";
-import TopicBar from "../Components/TopicBar";
 import { Link } from "react-router-dom";
 const Homepage = ({ articles, isLoading, setArticleQuery }) => {
   const matches = useMediaQuery("(min-width:600px)");
