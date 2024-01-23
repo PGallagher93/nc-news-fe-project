@@ -6,12 +6,12 @@ import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import IconButton from "@mui/material/IconButton";
 import MenuIcon from "@mui/icons-material/Menu";
-import AccountCircle from "@mui/icons-material/AccountCircle";
 import MenuItem from "@mui/material/MenuItem";
 import Menu from "@mui/material/Menu";
 import { Dropdown } from "@mui/base/Dropdown";
 import { fetchTopics } from "../../api";
 import { handleLogout } from "../../utils";
+import { Avatar } from "@mui/material";
 
 const NavBar = ({ user }) => {
   const [linksActivated, setLinksActivated] = useState(false);
@@ -98,8 +98,8 @@ const NavBar = ({ user }) => {
               onClick={handleMenu}
               color="inherit"
               sx={{p:0}}
-            >
-              <AccountCircle />
+            > {user.username === "" ? <Avatar /> : <Avatar src={user.userAvatar}/>}
+              
             </IconButton>
             <Menu
               id="menu-appbar"
