@@ -1,3 +1,4 @@
+import { Typography } from "@mui/material"
 import ArticleContainer from "../Components/ArticleContainer.jsx"
 import {useEffect} from 'react'
 
@@ -13,7 +14,9 @@ const AllArticles = ({isLoading, articles, articleQuery, setArticleQuery}) => {
     }
     return(
         <main>
-            
+            <Typography
+            variant="h3"
+            align="center">Articles</Typography>
             <ArticleContainer articles={articles} setArticleQuery={setArticleQuery}/>
         </main>
     )
