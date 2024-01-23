@@ -80,6 +80,9 @@ const NavBar = ({user}) =>{
                   <Link to= {`/`}>
                     <MenuItem onClick = {handleClose}>Home</MenuItem>
                   </Link>
+                  <Link to ={`/articles`}>
+                      <MenuItem conClick={handleClose}>All</MenuItem>
+                  </Link>
                 {topics.map((topic)=>{
                   return (
                     <Link key={topic.slug} to={`/${topic.slug}/articles`}>
