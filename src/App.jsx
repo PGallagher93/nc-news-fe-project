@@ -50,7 +50,7 @@ function App() {
   return (
     <>
       <Header user={user} />
-      <Box sx={{maxWidth:'1000px' , margin:'auto'}}>
+      <Box sx={{maxWidth:'1300px' , margin:'auto'}}>
       <Routes>
         <Route path="/400" element={<ErrorPage400 />} />
         <Route path="/404" element={<ErrorPage404 />} />
