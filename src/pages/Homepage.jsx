@@ -3,6 +3,7 @@ import{useEffect} from 'react'
 import HomeArticleContainer from "../Components/HomeArticleContainer"
 import Box from '@mui/system/Box'
 import TopicBar from "../Components/TopicBar"
+import { Link } from 'react-router-dom';
 const Homepage =({articles, isLoading, setArticleQuery}) =>{
 const matches = useMediaQuery('(min-width:600px)')
    useEffect(()=>{
@@ -12,6 +13,7 @@ const matches = useMediaQuery('(min-width:600px)')
    }, [])
    
     const articlesToDisplay = articles.slice(0, 8)
+    console.log(articlesToDisplay)
     if(isLoading){
         return (
             <p>Loading...</p>
@@ -36,7 +38,7 @@ const matches = useMediaQuery('(min-width:600px)')
                 return (
                     <ImageListItem key={article.title} sx={{width:{md: '19vw'},
                                                             height:{xs:'25vh'}}}>
-                        <ListItemButton sx={{padding: 0, height:'25vh'}}>
+                        <ListItemButton component={Link} to={`/articles/${article.article_id}`} sx={{padding: 0, height:'25vh'}}>
                             <img 
                              srcSet={article.article_img_url}
                              style={{
@@ -61,7 +63,7 @@ const matches = useMediaQuery('(min-width:600px)')
                 return (
                     <ImageListItem key={article.title} sx={{width:{md: '19vw'},
                                                             height:{xs:'25vh'}}}>
-                        <ListItemButton sx={{padding: 0, height:'25vh'}}>
+                        <ListItemButton component={Link} to={`/articles/${article.article_id}`} sx={{padding: 0, height:'25vh'}}>
                             <img 
                              srcSet={article.article_img_url}
                              style={{
