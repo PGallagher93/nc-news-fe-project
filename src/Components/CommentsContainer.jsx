@@ -21,7 +21,7 @@ const CommentsContainer = ({article_id, username, articleCommentCount}) =>{
     
     return (
         <Box id='comments' sx={{pt:'4rem'}}>
-            <Stack direction='row' justifyContent="space-between" sx={{px:{xs:'0', md:"5rem"}}}>
+            <Stack direction='row' justifyContent="space-between" sx={{px:{xs:'0'}}}>
                 <Typography variant='h5'>comments {articleCommentCount}</Typography>
                 <Button variant='text' color='secondary' onClick={() =>
                 document.querySelector("#comment-submission").scrollIntoView({

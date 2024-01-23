@@ -62,7 +62,7 @@ const CommentCard = ({ comment, username, setCommentDeleted }) => {
     });
   };
   return (
-    <Card sx={{ mx: { xs: "0", md: "5rem" }, my: 1, boxShadow: 3 }}>
+    <Card sx={{ mx: { xs: "0"}, my: 1, boxShadow: 3 }}>
       <CardContent sx={{ display: "flex", justifyContent: "space-between" }}>
         <Typography>{comment.author}</Typography>
         <Typography color="text.secondary">

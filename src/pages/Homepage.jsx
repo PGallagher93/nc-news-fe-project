@@ -12,31 +12,31 @@ const matches = useMediaQuery('(min-width:600px)')
     })
    }, [])
    
-    const articlesToDisplay = articles.slice(0, 8)
-    console.log(articlesToDisplay)
+    const articlesToDisplay = articles.slice(0, 6)
+    
     if(isLoading){
         return (
             <p>Loading...</p>
         )
     }
     
-    const mostPopularArticles = articles.sort((a, b) => { return b.votes - a.votes}).slice(0,8)
+    const mostPopularArticles = articles.sort((a, b) => { return b.votes - a.votes}).slice(0,6)
    
     return (
         <Box sx={{pt:'4rem',
                   display:'flex',
                   flexDirection:'column',
                   justifyContent:'center',
-                  mx:{md: '10rem'}
+                  
                   }}>
         <Typography 
         variant="h3"
         align="left"
         >Latest stories</Typography>
-        <ImageList cols={matches ? 4 : 1} >
+        <ImageList cols={matches ? 3 : 1} >
             {articlesToDisplay.map((article) =>{
                 return (
-                    <ImageListItem key={article.title} sx={{width:{md: '19vw'},
+                    <ImageListItem key={article.title} sx={{width:{md: '17vw'},
                                                             height:{xs:'25vh'}}}>
                         <ListItemButton component={Link} to={`/articles/${article.article_id}`} sx={{padding: 0, height:'25vh'}}>
                             <img 
@@ -58,10 +58,10 @@ const matches = useMediaQuery('(min-width:600px)')
         <Typography
         variant='h3'
         alight='left'>Popular stories</Typography>
-        <ImageList cols={matches ? 4 : 1} >
+        <ImageList cols={matches ? 3 : 1} >
             {mostPopularArticles.map((article) =>{
                 return (
-                    <ImageListItem key={article.title} sx={{width:{md: '19vw'},
+                    <ImageListItem key={article.title} sx={{width:{md: '17vw'},
                                                             height:{xs:'25vh'}}}>
                         <ListItemButton component={Link} to={`/articles/${article.article_id}`} sx={{padding: 0, height:'25vh'}}>
                             <img 

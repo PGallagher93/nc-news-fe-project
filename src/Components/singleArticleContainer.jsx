@@ -66,7 +66,7 @@ const SingleArticleContainer = ({ singleArticle, article_id }) => {
       }>
          <ArrowBackIosIcon/>
       </IconButton>
-      <Card sx={{ px: { xs: "0", md: "5rem" }, boxShadow: 0 }}>
+      <Card sx={{ px: { xs: "0"}, boxShadow: 0 }}>
         <CardContent sx={{ textAlign: "center" }}>
           <Typography variant="h5">{singleArticle.title}</Typography>
         </CardContent>
