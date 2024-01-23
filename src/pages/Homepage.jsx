@@ -32,11 +32,12 @@ const matches = useMediaQuery('(min-width:600px)')
         <Typography 
         variant="h3"
         align="left"
+        sx={{pl:{xs:'1rem'}}}
         >Latest stories</Typography>
         <ImageList cols={matches ? 3 : 1} >
             {articlesToDisplay.map((article) =>{
                 return (
-                    <ImageListItem key={article.title} >
+                    <ImageListItem key={article.title} sx={{padding:{xs:'1rem', md:'0'}}}>
                         <ListItemButton component={Link} to={`/articles/${article.article_id}`} sx={{padding: 0, height:'25vh'}}>
                             <img 
                              srcSet={article.article_img_url}
@@ -56,11 +57,12 @@ const matches = useMediaQuery('(min-width:600px)')
         </ImageList>
         <Typography
         variant='h3'
-        alight='left'>Popular stories</Typography>
+        alight='left'
+        sx={{pl:{xs:'1rem'}}}>Popular stories</Typography>
         <ImageList cols={matches ? 3 : 1} >
             {mostPopularArticles.map((article) =>{
                 return (
-                    <ImageListItem key={article.title} >
+                    <ImageListItem key={article.title} sx={{padding:{xs:'1rem', md:'0'}}} >
                         <ListItemButton component={Link} to={`/articles/${article.article_id}`} sx={{padding: 0, height:'25vh'}}>
                             <img 
                              srcSet={article.article_img_url}
