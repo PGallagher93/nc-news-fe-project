@@ -71,6 +71,7 @@ function App() {
               <AllArticles
                 isLoading={isLoading}
                 articles={articles}
+                articleQuery={articleQuery}
                 setArticleQuery={setArticleQuery}
               />
             }
@@ -95,6 +96,7 @@ function App() {
                 isLoading={isLoading}
                 setArticleQuery={setArticleQuery}
                 errorMessage={errorMessage}
+                articleQuery={articleQuery}
               />
             }
           />

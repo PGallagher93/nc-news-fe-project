@@ -1,8 +1,10 @@
-const SortOptions = ({ setArticleQuery }) => {
+const SortOptions = ({ setArticleQuery, articleQuery }) => {
+
+  
   return (
     <div className="sort-options-container">
       <select
-        defaultValue="unchosen"
+        defaultValue={`${articleQuery.sort}`}
         selected
         onChange={(e) => {
           setArticleQuery((currVal) => {
@@ -18,7 +20,7 @@ const SortOptions = ({ setArticleQuery }) => {
         <option value="votes">Most popular</option>
       </select>
       <select
-        defaultValue="unchosen"
+        defaultValue={`${articleQuery.order}`}
         selected
         onChange={(e) => {
           setArticleQuery((currVal) => {

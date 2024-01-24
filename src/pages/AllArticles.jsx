@@ -24,7 +24,7 @@ const AllArticles = ({
       <Typography variant="h3" align="center">
         Articles
       </Typography>
-      <ArticleContainer articles={articles} setArticleQuery={setArticleQuery} />
+      <ArticleContainer articles={articles} setArticleQuery={setArticleQuery} articleQuery={articleQuery}/>
     </main>
   );
 };

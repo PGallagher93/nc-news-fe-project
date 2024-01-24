@@ -8,6 +8,7 @@ const TopicArticles = ({
   setArticleQuery,
   errorMessage,
   isLoading,
+  articleQuery
 }) => {
   const { topic } = useParams();
 
@@ -33,6 +34,7 @@ const TopicArticles = ({
         <ArticleContainer
           articles={articles}
           setArticleQuery={setArticleQuery}
+          articleQuery={articleQuery}
         />
       </main>
     );
