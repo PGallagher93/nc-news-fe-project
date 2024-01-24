@@ -10,7 +10,6 @@ import MenuItem from "@mui/material/MenuItem";
 import Menu from "@mui/material/Menu";
 import { Dropdown } from "@mui/base/Dropdown";
 import { fetchTopics } from "../../api";
-import { handleLogout } from "../../utils";
 import { Avatar, Paper } from "@mui/material";
 
 const NavBar = ({ user }) => {
@@ -42,7 +41,7 @@ const NavBar = ({ user }) => {
 
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static" sx={{backgroundColor: 'black',maxWidth: "1300px", margin: "auto" }}>
+      <AppBar position="static" elevation={0} sx={{backgroundColor: 'black',maxWidth: "1300px", margin: "auto" }}>
         <Toolbar>
           <Dropdown>
             <IconButton
