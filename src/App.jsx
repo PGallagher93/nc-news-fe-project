@@ -45,7 +45,7 @@ function App() {
       : setUser({ username: "", userAvatar: null });
   }, [articleQuery]);
 
-  useEffect(() => {});
+  
 
   return (
     <>
