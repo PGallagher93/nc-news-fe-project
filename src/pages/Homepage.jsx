@@ -14,7 +14,7 @@ const Homepage = ({ articles, isLoading, setArticleQuery }) => {
   const matches = useMediaQuery("(min-width:600px)");
   useEffect(() => {
     setArticleQuery((currVal) => {
-      return { ...currVal, topic: null };
+      return { ...currVal, topic: null, order: null, sort:null };
     });
   }, []);
 
